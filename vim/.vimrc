@@ -20,6 +20,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'crusoexia/vim-monokai'
   Plug 'godlygeek/tabular'
   Plug 'ConradIrwin/vim-bracketed-paste/'
+  Plug 'ervandew/supertab'
 call plug#end()
 
 " color scheme
@@ -30,7 +31,8 @@ set t_Co=256
 set laststatus=2
 
 " .pl for prolog, not perl
-au BufRead,BufNewFile *.pl set filetype=prolog
+" I use perl more than prolog
+" au BufRead,BufNewFile *.pl set filetype=prolog
 
 " jj brings you the normal mode
 :imap jj <Esc>
@@ -43,13 +45,19 @@ set expandtab
 
 " Code readability
 set number
-set colorcolumn=80
+"set colorcolumn=80
 
 " Disable BCE
 if &term =~ '256color'
   set t_ut=
 endif
 
-colorscheme monokai
+"colorscheme monokai
 let g:airline_theme='powerlineish'
 let g:airline_powerline_fonts=1
+
+filetype plugin on
+filetype indent on
+set omnifunc=syntaxcomplete#Complete
+set path+=**
+set wildmenu
