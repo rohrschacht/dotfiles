@@ -21,6 +21,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'godlygeek/tabular'
   Plug 'ConradIrwin/vim-bracketed-paste/'
   Plug 'ervandew/supertab'
+  Plug 'tpope/vim-commentary'
 call plug#end()
 
 " color scheme
@@ -34,17 +35,16 @@ set laststatus=2
 " I use perl more than prolog
 " au BufRead,BufNewFile *.pl set filetype=prolog
 
-" jj brings you the normal mode
-:imap jj <Esc>
-
 " Indentation
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
-set expandtab
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+" set noexpandtab
+set autoindent
+set smartindent
 
 " Code readability
-set number
+set number relativenumber
 "set colorcolumn=80
 
 " Disable BCE
@@ -55,6 +55,12 @@ endif
 "colorscheme monokai
 let g:airline_theme='powerlineish'
 let g:airline_powerline_fonts=1
+
+nmap <F10> :NERDTreeToggle<CR>
+" imap fd <ESC>
+:imap jj <Esc>
+nmap <Space>fs :w<CR>
+nmap <Space>qq :q<CR>
 
 filetype plugin on
 filetype indent on
