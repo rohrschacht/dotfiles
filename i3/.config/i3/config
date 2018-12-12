@@ -2,7 +2,8 @@
 for_window [class="^.*"] border pixel 0
 
 # Gaps
-gaps inner 10
+# gaps inner 10
+gaps inner 0
 gaps outer 0
 smart_gaps on
 
@@ -48,6 +49,9 @@ bindsym $mod+Return exec konsole
 
 # Start a File Manager
 bindsym $mod+e exec dolphin
+
+# Lock the Screen
+# bindsym $mod+Shift+p exec "loginctl lock-session"
 
 # Kill focused window
 bindsym $mod+Shift+q kill
