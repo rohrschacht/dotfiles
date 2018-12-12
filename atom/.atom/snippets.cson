@@ -1,0 +1,26 @@
+'.text.bibtex':
+    'Online Citation':
+        'prefix': 'online'
+        'body': """
+        @online{$1,
+            author = {{$2}},
+            title = {{$3}},
+            year = $4,
+            url = {$5},
+            urldate = {$6},
+            note = {Zugegriffen: $6}
+        }
+        """
+
+'.text.tex.latex':
+    'Verbatim Code Monospace':
+        'prefix': 'verbatimcode'
+        'body': """
+        \\\\begingroup
+        \\\\fontsize{10pt}{10pt}\\\\selectfont
+        \\\\fontfamily{ttfamily}\\\\selectfont
+        \\\\begin{Verbatim}
+$1
+        \\\\end{Verbatim}
+        \\\\endgroup
+        """
