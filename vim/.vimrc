@@ -22,6 +22,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'ConradIrwin/vim-bracketed-paste/'
   Plug 'ervandew/supertab'
   Plug 'tpope/vim-commentary'
+  Plug 'chase/vim-ansible-yaml'
 call plug#end()
 
 " color scheme
@@ -34,6 +35,8 @@ set laststatus=2
 " .pl for prolog, not perl
 " I use perl more than prolog
 " au BufRead,BufNewFile *.pl set filetype=prolog
+
+au BufRead,BufNewFile *.yml set filetype=ansible
 
 " Indentation
 set tabstop=4
