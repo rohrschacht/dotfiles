@@ -1,0 +1,9 @@
+#!/bin/sh
+DEVICE=$(lsblk -o PATH,SIZE,HOTPLUG,VENDOR,LABEL,MODEL,MOUNTPOINT | tail -n +2 | rg '.{6,}\s+[0-9\.GMT]{2,}\s+1.*' | sed 's/\s\+/ /g' | cut -d ' ' -f1,2,4- | rg -v '.{6,}\s+[0-9\.GMT]{2,}\s+.*/' | rofi -dmenu -i -font "Helvetica Neue 15" | rg '^.{6,}?\s' -o)
+MOUNTPOINT=$(ls /mnt | sed 's/^/\/mnt\//g' | rofi -dmenu -i -font "Helvetica Neue 15")
+if [ ! -z "$DEVICE" ] && [ ! -z "$MOUNTPOINT" ]; then
+	/usr/lib/ssh/ssh-askpass | sudo -S mount $DEVICE $MOUNTPOINT
+	if [ $? -ne 0 ]; then
+		xmessage "Something went wrong!"
+	fi
+fi

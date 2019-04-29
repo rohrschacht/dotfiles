@@ -1,0 +1,4 @@
+[Desktop Entry]
+Name=Mounter
+Type=Application
+Exec=sh -c "$HOME/.dotfiles/bin/mounter"

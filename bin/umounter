@@ -1,0 +1,8 @@
+#!/bin/sh
+MOUNTPOINT=$(lsblk -o PATH,SIZE,HOTPLUG,VENDOR,LABEL,MODEL,MOUNTPOINT | tail -n +2 | rg '.{6,}\s+[0-9\.GMT]{2,}\s+1.*' | sed 's/\s\+/ /g' | cut -d ' ' -f1,2,4- | rg '.{6,}\s+[0-9\.GMT]{2,}\s+.*/' | rofi -dmenu -i -font "Helvetica Neue 15" | rev | cut -d' ' -f 1 | rev)
+if [ ! -z "$MOUNTPOINT" ]; then
+	/usr/lib/ssh/ssh-askpass | sudo -S umount $MOUNTPOINT
+	if [ $? -ne 0 ]; then
+		xmessage "Something went wrong!"
+	fi
+fi
