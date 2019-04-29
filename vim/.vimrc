@@ -61,7 +61,7 @@ let g:airline_powerline_fonts=1
 
 nmap <F10> :NERDTreeToggle<CR>
 " imap fd <ESC>
-:imap jj <Esc>
+:imap fd <Esc>
 nmap <Space>fs :w<CR>
 nmap <Space>qq :q<CR>
 
