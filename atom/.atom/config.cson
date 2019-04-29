@@ -2,6 +2,7 @@
   core:
     telemetryConsent: "no"
   editor:
+    fontFamily: "DejaVu Sans Mono"
     tabLength: 4
   "exception-reporting":
     userId: "978b9c64-f214-4835-9cee-669bfa298631"
