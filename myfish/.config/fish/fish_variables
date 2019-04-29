@@ -1,5 +1,6 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
+SETUVAR ANSIBLE_NOCOWS:1
 SETUVAR EDITOR:vim
 SETUVAR --export --path GOPATH:/home/tobias/go
 SETUVAR __fish_classic_git_prompt_initialized:\x1d
@@ -14,9 +15,11 @@ SETUVAR _fish_abbr_gaa:git\x20add\x20\x2d\x2dall
 SETUVAR _fish_abbr_gb:git\x20branch
 SETUVAR _fish_abbr_gc:git\x20commit\x20\x2dv
 SETUVAR _fish_abbr_gcm:git\x20commit\x20\x2dm
+SETUVAR _fish_abbr_gco:git\x20checkout
 SETUVAR _fish_abbr_gd:git\x20diff
 SETUVAR _fish_abbr_gl:git\x20pull
 SETUVAR _fish_abbr_glog:git\x20log\x20\x2d\x2doneline\x20\x2d\x2ddecorate\x20\x2d\x2dgraph
+SETUVAR _fish_abbr_gm:git\x20merge
 SETUVAR _fish_abbr_gp:git\x20push
 SETUVAR _fish_abbr_gst:git\x20status
 SETUVAR _fish_abbr_l:ls\x20\x2dlah
