@@ -4,6 +4,8 @@ MOUNTPOINT=$(ls /mnt | sed 's/^/\/mnt\//g' | rofi -dmenu -i -font "Helvetica Neu
 if [ ! -z "$DEVICE" ] && [ ! -z "$MOUNTPOINT" ]; then
 	/usr/lib/ssh/ssh-askpass | sudo -S mount $DEVICE $MOUNTPOINT
 	if [ $? -ne 0 ]; then
-		xmessage "Something went wrong!"
+		notify-send "Something went wrong!"
+	else
+		notify-send "$DEVICE successfully mounted on $MOUNTPOINT"
 	fi
 fi

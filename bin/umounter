@@ -3,6 +3,8 @@ MOUNTPOINT=$(lsblk -o PATH,SIZE,HOTPLUG,VENDOR,LABEL,MODEL,MOUNTPOINT | tail -n 
 if [ ! -z "$MOUNTPOINT" ]; then
 	/usr/lib/ssh/ssh-askpass | sudo -S umount $MOUNTPOINT
 	if [ $? -ne 0 ]; then
-		xmessage "Something went wrong!"
+		notify-send "Something went wrong!"
+	else
+		notify-send "$MOUNTPOINT successfully unmounted"
 	fi
 fi
