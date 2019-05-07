@@ -1,0 +1,8 @@
+#!/bin/sh
+for i in $( fd -d 1 -t d ); do
+  echo $i
+  cd $i
+  git pull
+  echo
+  cd ..
+done
