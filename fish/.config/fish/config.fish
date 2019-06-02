@@ -1,6 +1,15 @@
-set PATH $HOME/.cargo/bin $PATH
+set -x PATH $PATH $HOME/.local/bin $HOME/go/bin
+set -x SSH_AUTH_SOCK (gpgconf --list-dirs agent-ssh-socket)
 
-alias update='sudo bash ~/update.sh'
-alias win7='vboxmanage startvm "win7"'
-alias 3t='~/Downloads/3t/bin/robo3t'
-alias cat='bat'
+# Configuration for fish shell in emacs
+if test -n "$INSIDE_EMACS"
+	set -x TERM eterm-color
+end
+
+function fish_title
+	if test -n "$INSIDE_EMACS"
+		true
+	else
+		echo (status current-command) (__fish_pwd)
+	end
+end
