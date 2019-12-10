@@ -3,6 +3,7 @@ for i in $( fd -d 1 -t d ); do
   echo $i
   cd $i
   git pull
+  git clean -fdx
   echo
   cd ..
 done
