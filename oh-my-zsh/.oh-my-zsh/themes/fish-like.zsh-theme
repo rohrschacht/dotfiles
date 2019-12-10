@@ -29,7 +29,12 @@ function getPWD() {
 	fi
 
 	for (( ; start<${#dirarr}; start++ )); do
-		echo -n "${dirarr[start]:0:1}"
+		local firstchar="${dirarr[start]:0:1}"
+		if [[ $firstchar == "." ]]; then
+			echo -n "${dirarr[start]:0:2}" # . and second character
+		else
+			echo -n $firstchar
+		fi
 		echo -n "/"
 	done
 
@@ -52,8 +57,8 @@ local retcode="%(?.%{$fg_bold[green]%}(%?.%{$fg_bold[red]%}(%?))"
 #}
 
 function gitShowBranch() {
-	echo "%{$fg_bold[yellow]%}$(git branch 2>/dev/null | grep '*' | cut -d' ' -f2)"
+	git branch &>/dev/null && echo " %{$fg_bold[yellow]%}$(git branch 2>/dev/null | grep '*' | cut -d' ' -f2)"
 }
 
 setopt PROMPT_SUBST
-PROMPT=' $(rootRed)%n%{$fg_bold[yellow]%}@%{$fg_bold[cyan]%}%M %{$fg_bold[green]%}%{$fg_bold[yellow]%}$(getPWD) $retcode $(gitShowBranch)%{$fg_bold[magenta]%}>%{$reset_color%} '
+PROMPT='$(rootRed)%n%{$fg_bold[yellow]%}@%{$fg_bold[cyan]%}%M %{$fg_bold[green]%}%{$fg_bold[yellow]%}$(getPWD) $retcode$(gitShowBranch)%{$fg_bold[magenta]%}>%{$reset_color%} '

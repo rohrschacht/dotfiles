@@ -53,7 +53,7 @@ ZSH_THEME="fish-like"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git tmux ssh-hosts zsh-autosuggestions zsh-syntax-highlighting zsh-history-substring-search)
+plugins=(git tmux ssh-hosts zsh-autosuggestions zsh-history-substring-search zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -70,7 +70,36 @@ TERM=xterm-256color
 [ -n "$TMUX" ] && export TERM=screen-256color
 
 alias glog2='git log --graph --abbrev-commit --decorate --format=format:"%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n%C(white)%s%C(reset) %C(dim white)- %an%C(reset)" --all'
+alias ll='exa -lg'
+alias la='exa -lga'
+alias p=pacman
 
+
+functions ok() {
+	true
+}
+
+function pacman() {
+	if [[ $1 = "--depclean" ]]; then
+        sudo pacman -Rns $(command pacman -Qtdq)
+    elif [[ $1 = "--browse-installed" ]]; then
+        command pacman -Qq | fzf --preview 'command pacman -Qil {}' --layout=reverse --bind 'enter:execute(command pacman -Qil {} | less)'
+    elif [[ $1 = "--browse-explicitly-installed" ]]; then
+        command pacman -Qqe | fzf --preview 'command pacman -Qil {}' --layout=reverse --bind 'enter:execute(command pacman -Qil {} | less)'
+    elif [[ $1 = "-Ss" ]]; then
+        pacsearch $@[2,-1]
+    else
+        sudo pacman "$@"
+	fi
+}
+
+# Expand aliases
+function expand-alias() {
+	zle _expand_alias
+	zle self-insert
+}
+zle -N expand-alias
+bindkey -M main ' ' expand-alias
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -106,10 +135,6 @@ fi
 export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 
 export _JAVA_OPTIONS=-Dawt.useSystemAAFontSettings=on
-
-if [ -f ~/.zring ]; then
-  source ~/.zring
-fi
 
 export GOPATH=$HOME/go
 
