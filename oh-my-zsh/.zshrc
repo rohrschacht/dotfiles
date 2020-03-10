@@ -73,6 +73,8 @@ alias glog2='git log --graph --abbrev-commit --decorate --format=format:"%C(bold
 alias ll='exa -lg'
 alias la='exa -lga'
 alias p=pacman
+alias ssy='sudo systemctl '
+alias cp='cp -av --reflink=auto'
 
 
 functions ok() {
@@ -139,3 +141,5 @@ export _JAVA_OPTIONS=-Dawt.useSystemAAFontSettings=on
 export GOPATH=$HOME/go
 
 export PATH=$PATH:$GOPATH/bin
+
+export GO111MODULE=on
