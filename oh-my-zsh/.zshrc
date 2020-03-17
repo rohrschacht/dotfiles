@@ -103,6 +103,17 @@ function expand-alias() {
 zle -N expand-alias
 bindkey -M main ' ' expand-alias
 
+# Set window title
+DISABLE_AUTO_TITLE="true"
+
+function precmd() {
+	print -Pn "\e]0;%n@%M: %~\a"
+}
+
+function preexec() {
+	print -Pn "\e]0;$1\a"
+}
+
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
