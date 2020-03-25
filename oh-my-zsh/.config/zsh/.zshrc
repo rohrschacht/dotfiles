@@ -1,9 +1,5 @@
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
-export PATH=$PATH:$HOME/.local/bin
-
 # Path to your oh-my-zsh installation.
-export ZSH=$HOME/.oh-my-zsh
+export ZSH=$HOME/.config/oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -147,10 +143,4 @@ fi
 #export SSH_AUTH_SOCK=~/.ssh/ssh-agent.$(hostname).sock
 export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 
-export _JAVA_OPTIONS=-Dawt.useSystemAAFontSettings=on
-
-export GOPATH=$HOME/go
-
-export PATH=$PATH:$GOPATH/bin
-
-export GO111MODULE=on
+export VIMINIT="source $HOME/.config/vim/.vimrc"

@@ -3,15 +3,17 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
+set rtp=~/.config/vim/rtp
+
 " If it's the first start, install vim-plug and every plugin
-if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+if empty(glob('~/.config/vim/rtp/autoload/plug.vim'))
+  silent !curl -fLo ~/config/vim/rtp/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
 " vim plug
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.config/vim/rtp/plugged')
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
   Plug 'airblade/vim-gitgutter'
@@ -70,3 +72,5 @@ filetype indent on
 set omnifunc=syntaxcomplete#Complete
 set path+=**
 set wildmenu
+
+set viminfo+=n~/.config/vim/viminfo
