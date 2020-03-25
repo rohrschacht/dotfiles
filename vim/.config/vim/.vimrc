@@ -3,11 +3,11 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-set rtp=~/.config/vim/rtp,/usr/share/vim/vimfiles,/usr/share/vim/vim82,/usr/share/vim/vimfiles/after
+set rtp=$XDG_CONFIG_HOME/vim/rtp,/usr/share/vim/vimfiles,/usr/share/vim/vim82,/usr/share/vim/vimfiles/after
 
 " If it's the first start, install vim-plug and every plugin
-if empty(glob('~/.config/vim/rtp/autoload/plug.vim'))
-  silent !curl -fLo ~/config/vim/rtp/autoload/plug.vim --create-dirs
+if empty(glob('$XDG_CONFIG_HOME/vim/rtp/autoload/plug.vim'))
+  silent !curl -fLo $XDG_CONFIG_HOME/vim/rtp/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif

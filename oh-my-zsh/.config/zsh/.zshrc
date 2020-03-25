@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-export ZSH=$HOME/.config/oh-my-zsh
+export ZSH=$XDG_CONFIG_HOME/oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -143,4 +143,4 @@ fi
 #export SSH_AUTH_SOCK=~/.ssh/ssh-agent.$(hostname).sock
 export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 
-export VIMINIT="source $HOME/.config/vim/.vimrc"
+export VIMINIT="source $XDG_CONFIG_HOME/vim/.vimrc"
