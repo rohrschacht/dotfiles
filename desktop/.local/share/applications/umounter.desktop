@@ -1,4 +1,4 @@
 [Desktop Entry]
 Name=Umounter
 Type=Application
-Exec=sh -c "$HOME/.dotfiles/bin/umounter"
+Exec=umounter
