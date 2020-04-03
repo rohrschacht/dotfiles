@@ -1,0 +1,4 @@
+[Desktop Entry]
+Name=Setup Bspwm Monitors
+Type=Application
+Exec=setupBspwmMonitors

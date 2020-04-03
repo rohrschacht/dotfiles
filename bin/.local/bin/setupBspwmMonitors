@@ -1,0 +1,15 @@
+#!/bin/sh
+
+while true; do
+	selection=$( (xrandr -q | \grep "\sconnected" | cut -d' ' -f1; echo done) | rofi -dmenu -font "Helvetica Neue 15")
+	case $selection in
+		done) exit ;;
+		*)
+			desktops=$(seq 1 10 | rofi -dmenu -font "Helvetica Neue 15")
+			case $desktops in
+				*"-"*) echo $desktops | awk -F'-' '{print $1 " " $2}' | xargs seq | xargs -I{} bspc desktop {} -m $selection ;;
+				*) bspc desktop $desktops -m $selection ;;
+			esac
+		;;
+	esac
+done
