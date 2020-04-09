@@ -1,9 +1,11 @@
 #!/bin/sh
 
 while true; do
-	selection=$( (xrandr -q | \grep "\sconnected" | cut -d' ' -f1; echo done) | rofi -dmenu -font "Helvetica Neue 15")
+	selection=$( (xrandr -q | \grep "\sconnected" | cut -d' ' -f1; echo -e "homePrimary\nhomeSecondary\ndone") | rofi -dmenu -font "Helvetica Neue 15")
 	case $selection in
 		done) exit ;;
+		homePrimary) seq 1 5 | xargs -I{} bspc desktop {} -m DP2-1 &&  seq 6 10 | xargs -I{} bspc desktop {} -m DP2-3 || seq 1 5 | xargs -I{} bspc desktop {} -m DP1-1 &&  seq 6 10 | xargs -I{} bspc desktop {} -m DP1-3 ;;
+		homeSecondary) seq 1 5 | xargs -I{} bspc desktop {} -m DP2-3 || seq 1 5 | xargs -I{} bspc desktop {} -m DP1-3 && seq 6 10 | xargs -I{} bspc desktop {} -m eDP1 ;;
 		*)
 			desktops=$(seq 1 10 | rofi -dmenu -font "Helvetica Neue 15")
 			case $desktops in

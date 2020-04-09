@@ -7,6 +7,10 @@ super + d
 super + e
 	dolphin
 
+# kde poweroff dialog
+super + alt + p
+	qdbus org.kde.ksmserver /KSMServer logout 1 2 2
+
 # make sxhkd reload its configuration files:
 super + Escape
 	pkill -USR1 -x sxhkd
