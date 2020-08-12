@@ -4,7 +4,7 @@ pushd ~
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 mv .oh-my-zsh .config/
 rm .zshrc
-echo export ZDOTDIR="$HOME/.config/zsh" > /etc/zsh/zprofile
+echo export ZDOTDIR="$HOME/.config/zsh" | sudo tee /etc/zsh/zprofile
 popd
 stow oh-my-zsh
 cd ~/.config/.oh-my-zsh/plugins
