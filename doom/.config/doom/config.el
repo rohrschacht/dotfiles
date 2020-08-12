@@ -21,12 +21,17 @@
 ;; font string. You generally only need these two:
 ;; (setq doom-font (font-spec :family "monospace" :size 14))
 (setq doom-font (font-spec :family "DejaVu Sans Mono" :size 14))
+;; (setq doom-font (font-spec :family "Fira Code" :size 14))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
 (defun random_theme () (nth (random 3) '(doom-gruvbox doom-Iosvkem doom-peacock)))
 (setq doom-theme (random_theme))
+(defun theme-randomize ()
+  (interactive)
+  (load-theme (random_theme)))
+
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -88,6 +93,7 @@
 ;; they are implemented.
 
 (defun set-tab-width (w)
+  (interactive)
   ; START TABS CONFIG [from: https://dougie.io/emacs/indentation/]
   ;; Create a variable for our preferred tab width
   (setq custom-tab-width w)
@@ -107,6 +113,7 @@
 
   ;; Language-Specific Tweaks
   (setq-default python-indent-offset custom-tab-width) ;; Python
+  (add-hook 'python-mode-hook 'disable-tabs)
   (setq-default js-indent-level custom-tab-width)      ;; Javascript
 
   ;; Making electric-indent behave sanely
@@ -136,3 +143,16 @@
   )
 
 (set-tab-width 4)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   '("99ea831ca79a916f1bd789de366b639d09811501e8c092c85b2cb7d697777f93" "bc836bf29eab22d7e5b4c142d201bcce351806b7c1f94955ccafab8ce5b20208" "7d708f0168f54b90fc91692811263c995bebb9f68b8b7525d0e2200da9bc903c" "e2acbf379aa541e07373395b977a99c878c30f20c3761aac23e9223345526bcc" default)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(whitespace-tab ((t (:foreground "#636363")))))
