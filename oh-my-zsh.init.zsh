@@ -2,7 +2,7 @@
 
 pushd ~
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-mv .oh-my-zsh .config/
+mv .oh-my-zsh .config/oh-my-zsh
 rm .zshrc
 echo export ZDOTDIR="$HOME/.config/zsh" | sudo tee /etc/zsh/zshenv
 popd
