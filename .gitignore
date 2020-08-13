@@ -1,1 +1,4 @@
 exclude.txt
+oh-my-zsh/.config/zsh/.zcompdump-*
+vim/.config/vim/rtp/
+vim/.config/vim/viminfo
