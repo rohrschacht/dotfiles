@@ -71,9 +71,10 @@ alias la='exa -lga'
 alias p=pacman
 alias ssy='sudo systemctl '
 alias cp='cp -av --reflink=auto'
+unalias grep
 
 
-functions ok() {
+function ok() {
 	true
 }
 
@@ -90,6 +91,11 @@ function pacman() {
         sudo pacman "$@"
 	fi
 }
+
+function cal() {
+	command cal -m "$@"
+}
+
 
 # Expand aliases
 function expand-alias() {
