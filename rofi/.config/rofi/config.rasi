@@ -5,8 +5,9 @@
  */
 
 configuration {
-	modi: 							"combi,:rofind";
+	//modi: 							"combi,:rofind";
 	//combi-modi: 					"window,drun,\/:rofind,run";
+	modi:							"combi";
 	combi-modi: 					"window,drun,run";
 	me-select-entry:				"MouseSecondary";
 	me-accept-entry:				"MousePrimary";
