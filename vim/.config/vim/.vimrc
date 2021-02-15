@@ -3,7 +3,7 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-set rtp=$XDG_CONFIG_HOME/vim/rtp,/usr/share/vim/vimfiles,/usr/share/vim/vim82,/usr/share/vim/vimfiles/after
+set rtp=$XDG_CONFIG_HOME/vim/rtp,/usr/share/vim/vimfiles,/usr/share/vim/vim81,/usr/share/vim/vim82,/usr/share/vim/vimfiles/after
 
 " If it's the first start, install vim-plug and every plugin
 if empty(glob('$XDG_CONFIG_HOME/vim/rtp/autoload/plug.vim'))
@@ -57,7 +57,10 @@ if &term =~ '256color'
   set t_ut=
 endif
 
-"colorscheme monokai
+colorscheme monokai
+autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE
+autocmd vimenter * hi EndOfBuffer guibg=NONE ctermbg=NONE
+autocmd vimenter * hi LineNr guibg=NONE ctermbg=NONE
 let g:airline_theme='powerlineish'
 let g:airline_powerline_fonts=1
 
@@ -74,3 +77,5 @@ set path+=**
 set wildmenu
 
 set viminfo+=n~/.config/vim/viminfo
+
+cmap sw w !sudo tee > /dev/null %
