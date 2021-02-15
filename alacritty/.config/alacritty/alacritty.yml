@@ -275,15 +275,15 @@ colors:
 #
 # Specifying a `duration` of `0` will disable the visual bell.
 bell:
-  animation: EaseOutExpo
-  duration: 0
+  animation: EaseOut
+  duration: 200
   color: '0xffffff'
 
 # Background opacity
 #
 # Window opacity as a floating point number from `0.0` to `1.0`.
 # The value `0.0` is completely transparent and `1.0` is opaque.
-background_opacity: 0.5
+background_opacity: 0.8
 
 # Mouse bindings
 #
@@ -512,15 +512,15 @@ key_bindings:
   - { key: End,      mods: Alt,     chars: "\x1b[1;3F"                       }
   - { key: End,                     chars: "\x1bOF",        mode: AppCursor  }
   - { key: End,                     chars: "\x1b[F",        mode: ~AppCursor }
-  - { key: PageUp,   mods: Shift,   action: ScrollPageUp,   mode: ~Alt       }
-  - { key: PageUp,   mods: Shift,   chars: "\x1b[5;2~",     mode: Alt        }
-  - { key: PageUp,   mods: Control, chars: "\x1b[5;5~"                       }
-  - { key: PageUp,   mods: Alt,     chars: "\x1b[5;3~"                       }
+  - { key: PageUp,   mods: Control, action: ScrollPageUp,   mode: ~Alt       }
+  # - { key: PageUp,   mods: Shift,   chars: "\x1b[5;2~",     mode: Alt        }
+  # - { key: PageUp,   mods: Control, chars: "\x1b[5;5~"                       }
+  # - { key: PageUp,   mods: Alt,     chars: "\x1b[5;3~"                       }
   - { key: PageUp,                  chars: "\x1b[5~"                         }
-  - { key: PageDown, mods: Shift,   action: ScrollPageDown, mode: ~Alt       }
-  - { key: PageDown, mods: Shift,   chars: "\x1b[6;2~",     mode: Alt        }
-  - { key: PageDown, mods: Control, chars: "\x1b[6;5~"                       }
-  - { key: PageDown, mods: Alt,     chars: "\x1b[6;3~"                       }
+  - { key: PageDown, mods: Control, action: ScrollPageDown, mode: ~Alt       }
+  # - { key: PageDown, mods: Shift,   chars: "\x1b[6;2~",     mode: Alt        }
+  # - { key: PageDown, mods: Control, chars: "\x1b[6;5~"                       }
+  # - { key: PageDown, mods: Alt,     chars: "\x1b[6;3~"                       }
   - { key: PageDown,                chars: "\x1b[6~"                         }
   - { key: Tab,      mods: Shift,   chars: "\x1b[Z"                          }
   - { key: Back,                    chars: "\x7f"                            }
