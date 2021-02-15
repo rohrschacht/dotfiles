@@ -26,7 +26,7 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(defun random_theme () (nth (random 3) '(doom-gruvbox doom-Iosvkem doom-peacock)))
+(defun random_theme () (nth (random 5) '(doom-gruvbox doom-Iosvkem doom-peacock doom-molokai doom-monokai-classic)))
 (setq doom-theme (random_theme))
 (defun theme-randomize ()
   (interactive)
