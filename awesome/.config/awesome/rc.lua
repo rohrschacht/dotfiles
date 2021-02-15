@@ -53,8 +53,10 @@ beautiful.notification_font = "Noto Sans Bold 14"
 -- This is used later as the default terminal and editor to run.
 browser = "exo-open --launch WebBrowser" or "firefox"
 filemanager = "exo-open --launch FileManager" or "thunar"
+mailmanager = "exo-open --launch MailReader" or "thunderbird"
 gui_editor = "mousepad"
-terminal = os.getenv("TERMINAL") or "lxterminal"
+terminal = os.getenv("TERMINAL") or "alacritty"
+minimalfilemanager = terminal .. " -e ranger"
 
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
@@ -65,12 +67,12 @@ modkey = "Mod4"
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
     awful.layout.suit.tile,
-    awful.layout.suit.floating,
-    --awful.layout.suit.tile.left,
     awful.layout.suit.tile.bottom,
+    --awful.layout.suit.tile.left,
     -- awful.layout.suit.tile.top,
     awful.layout.suit.fair,
     awful.layout.suit.fair.horizontal,
+    awful.layout.suit.floating,
     -- awful.layout.suit.spiral,
     -- awful.layout.suit.spiral.dwindle,
     awful.layout.suit.max,
@@ -81,6 +83,9 @@ awful.layout.layouts = {
     -- awful.layout.suit.corner.sw,
     -- awful.layout.suit.corner.se,
 }
+
+-- Screen focus does not follow mouse, but stays on the screen with the active client
+-- awful.screen.default_focused_args = {client=true, mouse=false}
 -- }}}
 
 -- {{{ Helper functions
@@ -136,6 +141,24 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 -- {{{ Wibar
 -- Create a textclock widget
 mytextclock = wibox.widget.textclock("%H:%M ")
+-- Create a date tooltip for textclock
+mydatetooltip = awful.tooltip {
+	objects = { mytextclock },
+	timer_function = function()
+		return os.date('%A, %d.%m.%Y or %Y-%m-%d')
+	end,
+}
+-- Create a calendar tooltip on textclock left click
+mytextclock:connect_signal("button::press", function(_, _, _, button)
+	if button == 1 then
+		awful.spawn.easy_async("cal -m -3 -w", function(stdout, stderr, reason, exit_code)
+			local oldfont = beautiful.notification_font
+			beautiful.notification_font = "DejaVu Sans Mono 14"
+			naughty.notify { text = stdout }
+			beautiful.notification_font = oldfont
+		end)
+	end
+end)
 -- Keyboard map indicator and switcher
 mykeyboardlayout = awful.widget.keyboardlayout()
 
@@ -263,6 +286,8 @@ root.buttons(gears.table.join(
 
 -- {{{ Key bindings
 globalkeys = gears.table.join(
+    awful.key({ modkey,           }, "[", function() naughty.notify({ preset = naughty.config.presets.critical, title = "Oops, an error happened!",text =  os.getenv("TERMINAL")}) end,
+              {description="show help", group="awesome"}),
     awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
               {description="show help", group="awesome"}),
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev,
@@ -331,18 +356,42 @@ globalkeys = gears.table.join(
               {description = "decrease the number of columns", group = "layout"}),
     awful.key({ modkey     }, "b", function () awful.spawn(browser)          end,
               {description = "launch Browser", group = "launcher"}),
-    awful.key({ modkey, "Control"}, "Escape", function () awful.spawn("/usr/bin/rofi -show drun -modi drun") end,
+    -- awful.key({ modkey, "Control"}, "Escape", function () awful.spawn("/usr/bin/rofi -show drun -modi drun") end,
+    --           {description = "launch rofi", group = "launcher"}),
+    awful.key({ modkey,          }, "d", function () awful.spawn("/usr/bin/rofi -show drun -modi drun") end,
               {description = "launch rofi", group = "launcher"}),
+    awful.key({ modkey,          }, "`", function () awful.spawn("dmenuunicode") end,
+              {description = "launch dmenuunicode", group = "launcher"}),
+    awful.key({ modkey,           }, "c", function () awful.spawn(mailmanager)            end,
+              {description = "launch mailmanager", group = "launcher"}),
+    awful.key({ modkey, "Control" }, "e", function () awful.spawn(minimalfilemanager)            end,
+              {description = "launch minimal filemanager", group = "launcher"}),
     awful.key({ modkey,           }, "e", function () awful.spawn(filemanager)            end,
               {description = "launch filemanager", group = "launcher"}),
-    awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(-1)                       end,
+    -- awful.key({ modkey,           }, "space", function () awful.layout.inc( 1)                       end,
+    --           {description = "select next", group = "layout"}),
+    -- awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(-1)                       end,
+    --           {description = "select previous", group = "layout"}),
+    awful.key({ modkey,           }, ".", function () awful.layout.inc( 1)                       end,
+              {description = "select next", group = "layout"}),
+    awful.key({ modkey,           }, ",", function () awful.layout.inc(-1)                       end,
               {description = "select previous", group = "layout"}),
-    awful.key({                   }, "Print", function () awful.spawn.with_shell("sleep 0.1 && /usr/bin/i3-scrot -d")   end,
-              {description = "capture a screenshot", group = "screenshot"}),
-    awful.key({"Control"          }, "Print", function () awful.spawn.with_shell("sleep 0.1 && /usr/bin/i3-scrot -w")   end,
-              {description = "capture a screenshot of active window", group = "screenshot"}),
-    awful.key({"Shift"            }, "Print", function () awful.spawn.with_shell("sleep 0.1 && /usr/bin/i3-scrot -s")   end,
-              {description = "capture a screenshot of selection", group = "screenshot"}),
+    awful.key({ modkey,           }, "t", function () awful.layout.set(awful.layout.suit.tile.right)                    end,
+              {description = "Set tiling layout", group = "layout"}),
+    awful.key({ modkey, "Shift"   }, "t", function () awful.layout.set(awful.layout.suit.tile.bottom)                   end,
+              {description = "Set bottom stack layout", group = "layout"}),
+    awful.key({ modkey,           }, "u", function () awful.layout.set(awful.layout.suit.magnifier)                     end,
+              {description = "Set magnifier layout", group = "layout"}),
+    awful.key({ modkey, "Shift"   }, "u", function () awful.layout.set(awful.layout.suit.max)                           end,
+              {description = "Set maximum layout", group = "layout"}),
+    awful.key({ modkey, "Shift"   }, "f", function () awful.layout.set(awful.layout.suit.floating)                      end,
+              {description = "Set maximum layout", group = "layout"}),
+    -- awful.key({                   }, "Print", function () awful.spawn.with_shell("sleep 0.1 && /usr/bin/i3-scrot -d")   end,
+    --           {description = "capture a screenshot", group = "screenshot"}),
+    -- awful.key({"Control"          }, "Print", function () awful.spawn.with_shell("sleep 0.1 && /usr/bin/i3-scrot -w")   end,
+    --           {description = "capture a screenshot of active window", group = "screenshot"}),
+    -- awful.key({"Shift"            }, "Print", function () awful.spawn.with_shell("sleep 0.1 && /usr/bin/i3-scrot -s")   end,
+    --           {description = "capture a screenshot of selection", group = "screenshot"}),
 
     awful.key({ modkey, "Control" }, "n",
               function ()
@@ -385,7 +434,9 @@ clientkeys = gears.table.join(
               {description = "close", group = "client"}),
     awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle                     ,
               {description = "toggle floating", group = "client"}),
-    awful.key({ modkey, "Control" }, "Return", function (c) c:swap(awful.client.getmaster()) end,
+    -- awful.key({ modkey, "Control" }, "Return", function (c) c:swap(awful.client.getmaster()) end,
+    --           {description = "move to master", group = "client"}),
+    awful.key({ modkey,           }, "space", function (c) c:swap(awful.client.getmaster())                      end,
               {description = "move to master", group = "client"}),
     awful.key({ modkey,           }, "o",      function (c) c:move_to_screen()               end,
               {description = "move to screen", group = "client"}),
@@ -491,7 +542,7 @@ awful.rules.rules = {
                      buttons = clientbuttons,
                      size_hints_honor = false, -- Remove gaps between terminals
                      screen = awful.screen.preferred,
-                     callback = awful.client.setslave,
+                     -- callback = awful.client.setslave,
                      placement = awful.placement.no_overlap+awful.placement.no_offscreen
      }
     },
@@ -600,12 +651,12 @@ client.connect_signal("request::titlebars", function(c)
 end)
 
 -- Enable sloppy focus, so that focus follows mouse.
-client.connect_signal("mouse::enter", function(c)
-    if awful.layout.get(c.screen) ~= awful.layout.suit.magnifier
-        and awful.client.focus.filter(c) then
-        client.focus = c
-    end
-end)
+-- client.connect_signal("mouse::enter", function(c)
+--     if awful.layout.get(c.screen) ~= awful.layout.suit.magnifier
+--         and awful.client.focus.filter(c) then
+--         client.focus = c
+--     end
+-- end)
 
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)

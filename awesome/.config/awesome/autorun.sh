@@ -8,9 +8,9 @@ function run {
 }
 
 ## run (only once) processes which spawn with different name
-if (command -v gnome-keyring-daemon && ! pgrep gnome-keyring-d); then
-    gnome-keyring-daemon --daemonize --login &
-fi
+# if (command -v gnome-keyring-daemon && ! pgrep gnome-keyring-d); then
+#     gnome-keyring-daemon --daemonize --login &
+# fi
 if (command -v start-pulseaudio-x11 && ! pgrep pulseaudio); then
     start-pulseaudio-x11 &
 fi
@@ -23,11 +23,11 @@ fi
 
 run xfsettingsd
 run nm-applet
-run light-locker
-run xcape -e 'Super_L=Super_L|Control_L|Escape'
+run light-locker --no-lock-on-lid
 run thunar --daemon
 run pa-applet
 run pamac-tray
+run keynav
 
 ## The following are not included in minimal edition by default
 ## but autorun.sh will pick them up if you install them
@@ -36,6 +36,10 @@ if (command -v system-config-printer-applet && ! pgrep applet.py ); then
   system-config-printer-applet &
 fi
 
-run compton --shadow-exclude '!focused'
+run picom --shadow-exclude '!focused' --inactive-opacity=1.0 --menu-opacity=1.0 --frame-opacity=1.0
 run blueman-applet
 run msm_notifier
+run xss-lock -- /usr/bin/i3lock -c 00ffff
+
+# [ -f $XDG_CONFIG_HOME/xkb/layout.xkb ] && sleep 1 && xkbcomp $XDG_CONFIG_HOME/xkb/layout.xkb $DISPLAY >/dev/null 2>&1 &
+# [ -f $XDG_CONFIG_HOME/xkb/layout.xkb ] && $HOME/.local/bin/file-inotify /tmp/keyboard-udev.lock "xkbcomp $XDG_CONFIG_HOME/xkb/layout.xkb $DISPLAY >/dev/null 2>&1" &
