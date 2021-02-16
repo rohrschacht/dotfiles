@@ -57,7 +57,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git tmux ssh-hosts zsh-autosuggestions zsh-history-substring-search zsh-syntax-highlighting)
+plugins=(git tmux ssh-hosts ssh-bootstrap-config zsh-autosuggestions zsh-history-substring-search zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -86,6 +86,9 @@ alias ssy='sudo systemctl '
 alias cp='cp -av --reflink=auto'
 unalias grep
 
+function ssh() {
+	ssh-bootstrap-config "$@"
+}
 
 function ok() {
 	true
