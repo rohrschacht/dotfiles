@@ -74,8 +74,13 @@ bindkey "^[[6~" history-substring-search-down
 [ -n "$TMUX" ] && export TERM=screen-256color
 
 alias glog2='git log --graph --abbrev-commit --decorate --format=format:"%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n%C(white)%s%C(reset) %C(dim white)- %an%C(reset)" --all'
-alias ll='exa -lg'
-alias la='exa -lga'
+if command -v exa >/dev/null 2>&1; then
+	alias ll='exa -lg'
+	alias la='exa -lga'
+else
+	alias ll='ls -lh'
+	alias la='ls -lah'
+fi
 alias p=pacman
 alias ssy='sudo systemctl '
 alias cp='cp -av --reflink=auto'
