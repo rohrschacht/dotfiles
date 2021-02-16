@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.config/zsh/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # Path to your oh-my-zsh installation.
 export ZSH=$XDG_CONFIG_HOME/oh-my-zsh
 
@@ -5,7 +12,8 @@ export ZSH=$XDG_CONFIG_HOME/oh-my-zsh
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 # ZSH_THEME="robbyrussell"
-ZSH_THEME="fish-like"
+#ZSH_THEME="fish-like"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -62,7 +70,7 @@ bindkey "^[[6~" history-substring-search-down
 
 #bindkey -v
 #export KEYTIMEOUT=1
-TERM=xterm-256color
+#export TERM=xterm-256color
 [ -n "$TMUX" ] && export TERM=screen-256color
 
 alias glog2='git log --graph --abbrev-commit --decorate --format=format:"%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n%C(white)%s%C(reset) %C(dim white)- %an%C(reset)" --all'
@@ -150,3 +158,10 @@ fi
 export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 
 export VIMINIT="source $XDG_CONFIG_HOME/vim/.vimrc"
+
+# To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
+if [ "$TERM" = "linux" ]; then
+	[[ ! -f ~/.config/zsh/.p10k-ascii-8color.zsh ]] || source ~/.config/zsh/.p10k-ascii-8color.zsh
+else
+	[[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
+fi
