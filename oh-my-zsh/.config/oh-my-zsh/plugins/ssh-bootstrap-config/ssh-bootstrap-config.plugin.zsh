@@ -11,6 +11,6 @@ function ssh-bootstrap-config() {
 		|| { echo ssh-bootstrap-config: Host does not have zsh, git and stow installed or they are not in path; command ssh -t "$@"; return; }
 
 	# open interactive zsh with my config
-	command ssh -t "$@" ZDOTDIR="$HOME/.config/zsh" TERM=xterm-256color zsh
+	command ssh -t "$@" ZDOTDIR='$HOME/.config/zsh' TERM=xterm-256color zsh
 }
 
