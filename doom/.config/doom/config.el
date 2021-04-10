@@ -26,12 +26,15 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(defun random_theme () (nth (random 5) '(doom-gruvbox doom-Iosvkem doom-peacock doom-molokai doom-monokai-classic)))
-(setq doom-theme (random_theme))
-(defun theme-randomize ()
-  (interactive)
-  (load-theme (random_theme)))
+;; (defun random_theme () (nth (random 5) '(doom-gruvbox doom-Iosvkem doom-peacock doom-molokai doom-monokai-classic)))
+;; (setq doom-theme (random_theme))
+;; (defun theme-randomize ()
+;;   (interactive)
+;;   (load-theme (random_theme)))
 
+(use-package! base16-theme
+  :config
+  (load-theme 'base16-darcula-goland t))
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
