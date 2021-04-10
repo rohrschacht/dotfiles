@@ -86,9 +86,8 @@ alias ssy='sudo systemctl '
 alias cp='cp -av --reflink=auto'
 unalias grep
 
-function ssh() {
-	ssh-bootstrap-config "$@"
-}
+alias ssh=ssh-bootstrap-config
+compdef ssh-bootstrap-config=ssh
 
 function ok() {
 	true
@@ -114,12 +113,12 @@ function cal() {
 
 
 # Expand aliases
-function expand-alias() {
-	zle _expand_alias
-	zle self-insert
-}
-zle -N expand-alias
-bindkey -M main ' ' expand-alias
+# function expand-alias() {
+# 	zle _expand_alias
+# 	zle self-insert
+# }
+# zle -N expand-alias
+# bindkey -M main ' ' expand-alias
 
 # Set window title
 DISABLE_AUTO_TITLE="true"
