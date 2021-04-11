@@ -83,6 +83,7 @@ else
 fi
 alias p=pacman
 alias ssy='sudo systemctl '
+compdef ssy=systemctl
 alias cp='cp -av --reflink=auto'
 unalias grep
 
