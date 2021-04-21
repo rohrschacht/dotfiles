@@ -5,7 +5,8 @@ cd $HOME
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 mv .oh-my-zsh .config/oh-my-zsh
 rm .zshrc
-echo export ZDOTDIR="$HOME/.config/zsh" | sudo tee /etc/zsh/zshenv
+[ -f /etc/zsh/zshenv ] && echo export ZDOTDIR="$HOME/.config/zsh" | sudo tee -a /etc/zsh/zshenv
+[ -f /etc/zshenv ] && echo export ZDOTDIR="$HOME/.config/zsh" | sudo tee -a /etc/zshenv
 cd $PWDSAVE
 stow oh-my-zsh
 mkdir -p ~/.local/share/zsh
