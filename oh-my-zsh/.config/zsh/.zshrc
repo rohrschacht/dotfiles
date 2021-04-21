@@ -85,6 +85,7 @@ alias p=pacman
 alias ssy='sudo systemctl '
 compdef ssy=systemctl
 alias cp='cp -av --reflink=auto'
+alias n=ranger
 unalias grep
 
 alias ssh=ssh-bootstrap-config
