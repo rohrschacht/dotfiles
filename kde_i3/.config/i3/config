@@ -16,7 +16,7 @@ set $mod Mod4
 font pango:monospace 8
 
 # disable window titles
-for_window [class="^.*"] border pixel 1
+for_window [class="^.*"] border pixel 2
 gaps inner 5
 smart_gaps on
 
@@ -29,7 +29,7 @@ mouse_warping none
 #font pango:DejaVu Sans Mono 8
 
 # Background image
-exec --no-startup-id feh --no-fehbg --bg-scale --recursive --randomize /usr/share/wallpapers
+exec_always --no-startup-id feh --no-fehbg --bg-scale --recursive --randomize /usr/share/wallpapers
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -42,14 +42,14 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 floating_modifier $mod
 
 # application launchers
-# start a terminal
 bindsym $mod+d exec rofi -show drun -modi drun # Dmenu
 bindsym $mod+Return exec alacritty # terminal
 bindsym $mod+b exec firefox # Browser
 bindsym $mod+c exec evolution # mail Communication
-bindsym $mod+n exec thunar # file maNager
+bindsym $mod+n exec dolphin # file maNager
 bindsym $mod+Shift+n exec alacritty -e ranger # minimal file maNager
 bindsym $mod+Control+s exec loginctl lock-session # lock (Secure system)
+bindsym $mod+End exec --no-startup-id qdbus org.kde.ksmserver /KSMServer org.kde.KSMServerInterface.logout -1 -1 -1 # shutdown dialog
 
 # kill focused window
 bindsym $mod+x kill
