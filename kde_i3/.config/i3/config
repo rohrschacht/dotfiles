@@ -43,7 +43,7 @@ floating_modifier $mod
 
 # application launchers
 bindsym $mod+d exec rofi -show drun -modi drun # Dmenu
-bindsym $mod+Return exec alacritty # terminal
+bindsym $mod+Return exec WINIT_HIDPI_FACTOR=1 alacritty # terminal
 bindsym $mod+b exec firefox # Browser
 bindsym $mod+c exec evolution # mail Communication
 bindsym $mod+n exec dolphin # file maNager
