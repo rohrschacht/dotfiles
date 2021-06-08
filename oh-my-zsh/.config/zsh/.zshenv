@@ -9,5 +9,5 @@ export _JAVA_OPTIONS=-Dawt.useSystemAAFontSettings=on
 export GO111MODULE=on
 export LESSHISTFILE=-
 export LESSHISTSIZE=0
-export BROWSER="/usr/bin/qutebrowser"
+export BROWSER="/usr/bin/firefox"
 export JAVA_HOME="/usr/lib/jvm/default-runtime"
