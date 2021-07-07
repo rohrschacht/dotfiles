@@ -113,6 +113,11 @@ function cal() {
 	command cal -m "$@"
 }
 
+function decompressBtrfs() {
+	[ -z "$1" ] && { echo "Specify directory to recursively decompress!" ; return 1 }
+	sudo find "$1" | xargs -I{} sudo btrfs property set {} compression none
+	sudo find "$1" -type f | xargs -I{} sudo sh -c "mv {} {}.compd && cp {}.compd {} && rm {}.compd"
+}
 
 # Expand aliases
 # function expand-alias() {
