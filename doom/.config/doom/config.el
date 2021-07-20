@@ -20,7 +20,7 @@
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
 ;; (setq doom-font (font-spec :family "monospace" :size 14))
-(setq doom-font (font-spec :family "DejaVu Sans Mono Nerd Font" :size 14))
+(setq doom-font (font-spec :family "Inconsolata" :size 20))
 ;; (setq doom-font (font-spec :family "Fira Code" :size 14))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
@@ -31,10 +31,7 @@
 ;; (defun theme-randomize ()
 ;;   (interactive)
 ;;   (load-theme (random_theme)))
-(setq doom-theme 'doom-nord)
-;; (use-package! base16-theme
-;;   :config
-;;   (load-theme 'base16-darcula-goland t))
+(setq doom-theme 'doom-gruvbox)
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -118,6 +115,7 @@
   (setq-default python-indent-offset custom-tab-width) ;; Python
   (add-hook 'python-mode-hook 'disable-tabs)
   (setq-default js-indent-level custom-tab-width)      ;; Javascript
+  (add-hook 'go-mode-hook 'enable-tabs)
 
   ;; Making electric-indent behave sanely
   (setq-default electric-indent-inhibit t)
@@ -146,6 +144,9 @@
   )
 
 (set-tab-width 4)
+
+(delete 'tabs whitespace-style)
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
