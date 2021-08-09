@@ -6,10 +6,3 @@ if test -n "$INSIDE_EMACS"
 	set -x TERM eterm-color
 end
 
-function fish_title
-	if test -n "$INSIDE_EMACS"
-		true
-	else
-		echo (status current-command) (__fish_pwd)
-	end
-end
