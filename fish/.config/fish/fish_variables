@@ -2,14 +2,12 @@
 # VERSION: 3.0
 SETUVAR ANSIBLE_NOCOWS:1
 SETUVAR EDITOR:vim
-SETUVAR --export GO111MODULE:on
 SETUVAR --export --path GOPATH:/home/tobias/go
 SETUVAR __fish_classic_git_prompt_initialized:\x1d
 SETUVAR __fish_init_2_39_8:\x1d
 SETUVAR __fish_init_2_3_0:\x1d
 SETUVAR __fish_init_3_x:\x1d
 SETUVAR __fish_initialized:3100
-SETUVAR _fish_abbr_SS:sudo\x20systemctl
 SETUVAR _fish_abbr_c:cat
 SETUVAR _fish_abbr_g:git
 SETUVAR _fish_abbr_ga:git\x20add
@@ -28,6 +26,7 @@ SETUVAR _fish_abbr_gp:git\x20push
 SETUVAR _fish_abbr_gst:git\x20status
 SETUVAR _fish_abbr_l:ls\x20\x2dlah
 SETUVAR _fish_abbr_p:pacman
+SETUVAR _fish_abbr_ssy:sudo\x20systemctl
 SETUVAR _fish_abbr_v:vim
 SETUVAR _fish_abbr_vm:virt\x2dmanager
 SETUVAR fish_color_autosuggestion:555\x1ebrblack
@@ -56,8 +55,13 @@ SETUVAR fish_color_user:brgreen
 SETUVAR fish_color_user_root:red
 SETUVAR fish_color_valid_path:\x2d\x2dunderline
 SETUVAR fish_greeting:Welcome\x20to\x20fish\x2c\x20the\x20friendly\x20interactive\x20shell
-SETUVAR fish_key_bindings:fish_default_key_bindings
+SETUVAR fish_key_bindings:fish_vi_key_bindings
 SETUVAR fish_pager_color_completion:\x1d
 SETUVAR fish_pager_color_description:B3A06D\x1eyellow
 SETUVAR fish_pager_color_prefix:white\x1e\x2d\x2dbold\x1e\x2d\x2dunderline
 SETUVAR fish_pager_color_progress:brwhite\x1e\x2d\x2dbackground\x3dcyan
+SETUVAR theme_color_scheme:dark
+SETUVAR theme_date_format:\x2b\x25a\x20\x25H\x3a\x25M\x3a\x25S
+SETUVAR theme_nerd_fonts:yes
+SETUVAR theme_project_dir_length:1
+SETUVAR theme_show_exit_status:yes
