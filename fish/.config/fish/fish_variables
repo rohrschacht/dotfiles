@@ -24,6 +24,12 @@ SETUVAR _fish_abbr_glog:git\x20log\x20\x2d\x2doneline\x20\x2d\x2ddecorate\x20\x2
 SETUVAR _fish_abbr_gm:git\x20merge
 SETUVAR _fish_abbr_gp:git\x20push
 SETUVAR _fish_abbr_gst:git\x20status
+SETUVAR _fish_abbr_gsta:git\x20stash\x20push
+SETUVAR _fish_abbr_gstaa:git\x20stash\x20apply
+SETUVAR _fish_abbr_gstd:git\x20stash\x20drop
+SETUVAR _fish_abbr_gstl:git\x20stash\x20list
+SETUVAR _fish_abbr_gstp:git\x20stash\x20pop
+SETUVAR _fish_abbr_gsts:git\x20stash\x20show\x20\x2d\x2dtext
 SETUVAR _fish_abbr_l:ls\x20\x2dlah
 SETUVAR _fish_abbr_p:pacman
 SETUVAR _fish_abbr_ssy:sudo\x20systemctl
