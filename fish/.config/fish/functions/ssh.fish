@@ -1,4 +1,3 @@
-# Defined in /tmp/fish.li7EaM/ssh.fish @ line 2
 function ssh
 	command ssh $argv 'which fish >/dev/null 2>&1 && which git >/dev/null 2>&1 && which stow >/dev/null 2>&1 || exit 1 \
 		&& [ -d "$HOME/.dotfiles" ] && { cd "$HOME/.dotfiles" && git pull && [ -L "$HOME/.config/fish" ] || { rm -rf "$HOME/.config/fish" && cd "$HOME/.dotfiles" && stow fish oh-my-fish && [ -d "$HOME/.local/share/omf" ] || fish -c oh-my-fish-init ; }; } \
@@ -8,7 +7,7 @@ function ssh
 	if not test $status -eq 0
 		echo ssh-bootstrap-config: Host does not have fish, git and stow installed or they are not in path
 		command ssh -t $argv
-		exit
+		return
 	end
 
 	# open interactive fish with my config
