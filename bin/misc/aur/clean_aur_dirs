@@ -1,0 +1,11 @@
+#!/bin/sh
+for i in *; do
+  if [ -d $i ]; then
+	echo $i
+	cd $i
+	git clean -ffdx
+	git submodule foreach --recursive git clean -ffdx
+	echo
+	cd ..
+  fi
+done
