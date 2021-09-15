@@ -95,7 +95,7 @@ scrolling:
 font:
   # Normal (roman) font face
   normal:
-    family: InconsolataGo Nerd Font
+    family: DejaVu Sans Mono Nerd Font
     # Font family
     #
     # Default:
@@ -109,7 +109,7 @@ font:
 
   # Bold font face
   bold:
-    family: InconsolataGo Nerd Font
+    family: DejaVu Sans Mono Nerd Font
     # Font family
     #
     # If the bold family is not specified, it will fall back to the
@@ -121,7 +121,7 @@ font:
 
   # Italic font face
   italic:
-    family: InconsolataGo Nerd Font
+    family: DejaVu Sans Mono Nerd Font
     # Font family
     #
     # If the italic family is not specified, it will fall back to the
@@ -132,7 +132,7 @@ font:
     style: Oblique
 
   # Point size
-  size: 15.5
+  size: 13.0
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
