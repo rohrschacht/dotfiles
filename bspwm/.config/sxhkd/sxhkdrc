@@ -2,7 +2,7 @@ super + Return
 	$TERMINAL
 
 super + d
-	rofi -modi drun -show drun -font "Helvetica Neue 15"
+	rofi -modi drun -show drun
 
 super + e
 	dolphin
@@ -68,7 +68,7 @@ super + ctrl + {m,x,s,p}
 
 # focus the next/previous node in the current desktop
 super + {_, shift + }{j,k}
-	bspc node -{f,s} {next,prev}.local
+	bspc node -{f,s} {next,prev}.local.leaf
 
 # focus the next/previous desktop in the current monitor
 # super + bracket{left,right}
