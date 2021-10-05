@@ -40,7 +40,7 @@ super + y
 
 # swap the current node and the biggest node
 super + space
-	bspc node -s biggest
+	bspc node -s biggest.local
 
 #
 # state/flags
