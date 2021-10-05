@@ -2,19 +2,33 @@
 
 sxhkd &
 
-readarray -t MONITORS < <(xrandr -q | grep -w connected | cut -d' ' -f1)
+readarray -t MONITORS < <(bspc query -M)
+readarray -t DESKTOPS < <(bspc query -D)
+
+
+if [ "${#DESKTOPS[@]}" -lt 10 ]; then
+	bspc monitor ^1 -d 1 2 3 4 5 6 7 8 9 10
+fi
+
 if [ "${#MONITORS[@]}" = 1 ]; then
-	bspc monitor -d 1 2 3 4 5 6 7 8 9 10
+	seq 1 10 | xargs -I{} bspc desktop {} -m ^1
 elif [ "${#MONITORS[@]}" = 2 ]; then
-	bspc monitor ^1 -d 1 2 3 4 5
-	bspc monitor ^2 -d 6 7 8 9 10
+	seq 1 5 | xargs -I{} bspc desktop {} -m ^1
+	seq 6 10 | xargs -I{} bspc desktop {} -m ^2
+	bspc desktop Desktop -r
 elif [ "${#MONITORS[@]}" = 3 ]; then
-	bspc monitor ^1 -d 1 2 3 4 5
-	bspc monitor ^2 -d 6 7 8
-	bspc monitor ^3 -d 9 10
+	seq 1 5 | xargs -I{} bspc desktop {} -m ^1
+	seq 6 8 | xargs -I{} bspc desktop {} -m ^2
+	seq 9 10 | xargs -I{} bspc desktop {} -m ^3
+	bspc desktop Desktop -r
 fi
 
 bspc config bottom_padding 36
+bspc config border_width 2
+bspc config focused_border_color "#00ffff"
+bspc config remove_disabled_monitors true
+bspc config remove_unplugged_monitors true
+bspc config merge_overlapping_monitors true
 
 bspc rule -a emacs state=tiled
 bspc rule -a Emacs state=tiled
