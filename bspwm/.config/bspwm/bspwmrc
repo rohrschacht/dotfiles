@@ -1,8 +1,18 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 sxhkd &
 
-bspc monitor -d 1 2 3 4 5 6 7 8 9 10 Desktop
+readarray -t MONITORS < <(xrandr -q | grep -w connected | cut -d' ' -f1)
+if [ "${#MONITORS[@]}" = 1 ]; then
+	bspc monitor -d 1 2 3 4 5 6 7 8 9 10
+elif [ "${#MONITORS[@]}" = 2 ]; then
+	bspc monitor ^1 -d 1 2 3 4 5
+	bspc monitor ^2 -d 6 7 8 9 10
+elif [ "${#MONITORS[@]}" = 3 ]; then
+	bspc monitor ^1 -d 1 2 3 4 5
+	bspc monitor ^2 -d 6 7 8
+	bspc monitor ^3 -d 9 10
+fi
 
 bspc config bottom_padding 36
 
