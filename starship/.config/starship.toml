@@ -1,0 +1,65 @@
+add_newline = false
+
+format = """${custom.homeindicator}$directory$git_branch$git_status$character"""
+right_format = """$cmd_duration$all$memory_usage$time"""
+
+[character]
+disabled = false
+success_symbol = "[  ](fg:black bg:green)[](green)"
+error_symbol = "[  ](fg:black bold bg:red)[](bold red)"
+vicmd_symbol = "[  ](fg:black bg:purple)[](purple)"
+format = "$symbol "
+
+[directory]
+fish_style_pwd_dir_length = 1
+read_only = " "
+format = "[$read_only]($read_only_style)[ $path ]($style)"
+style = "fg:black bg:blue"
+read_only_style = "fg:black bg:blue"
+
+[custom.homeindicator]
+symbol = " "
+when = """ test "$HOME" = "$PWD" """
+format = "[ $symbol]($style)"
+style = "fg:black bg:blue"
+
+[git_branch]
+format = "[ $symbol$branch ]($style)"
+style = "fg:black bg:yellow"
+
+[git_status]
+format = '([$all_status$ahead_behind ]($style))'
+style = "fg:black bg:yellow"
+
+[aws]
+disabled = true
+
+[line_break]
+disabled = true
+
+[shell]
+disabled = true
+fish_indicator = ""
+
+[cmd_duration]
+disabled = false
+format = "[ $duration   ]($style)"
+style = "fg:yellow bg:black"
+
+[memory_usage]
+disabled = false
+threshold = 0
+symbol = " "
+format = "[](fg:yellow bg:black)[ ${ram} $symbol ]($style)"
+style = "fg:black bg:yellow"
+
+[time]
+disabled = false
+format = "[](fg:white bg:yellow)[ $time   ]($style) "
+style = "fg:black bg:white"
+
+[nodejs]
+format = "[$symbol($version )]($style)"
+
+[golang]
+format = "[$symbol($version )]($style)"
