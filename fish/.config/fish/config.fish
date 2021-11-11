@@ -19,3 +19,7 @@ else
 	alias ll 'ls -lh'
 	alias la 'ls -lah'
 end
+
+if command -v starship >/dev/null 2>&1
+	starship init fish | source
+end
