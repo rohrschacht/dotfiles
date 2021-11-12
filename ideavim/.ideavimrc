@@ -1,0 +1,3 @@
+set number relativenumber
+imap fd <Esc>
+nmap <Space>fs :w<CR>
