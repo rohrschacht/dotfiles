@@ -23,6 +23,10 @@ when = """ test "$HOME" = "$PWD" """
 format = "[ $symbol]($style)"
 style = "fg:black bg:blue"
 
+[status]
+disabled = false
+map_symbol = true
+
 [git_branch]
 format = "[ $symbol$branch ]($style)"
 style = "fg:black bg:yellow"
