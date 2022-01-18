@@ -26,6 +26,10 @@ SETUVAR _fish_abbr_gl:git\x20pull
 SETUVAR _fish_abbr_glog:git\x20log\x20\x2d\x2doneline\x20\x2d\x2ddecorate\x20\x2d\x2dgraph
 SETUVAR _fish_abbr_gm:git\x20merge
 SETUVAR _fish_abbr_gp:git\x20push
+SETUVAR _fish_abbr_gr:git\x20remote
+SETUVAR _fish_abbr_gra:git\x20remote\x20add
+SETUVAR _fish_abbr_grrm:git\x20remote\x20remove
+SETUVAR _fish_abbr_grv:git\x20remote\x20\x2dv
 SETUVAR _fish_abbr_gst:git\x20status
 SETUVAR _fish_abbr_gsta:git\x20stash\x20push
 SETUVAR _fish_abbr_gstaa:git\x20stash\x20apply
