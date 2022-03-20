@@ -2,6 +2,7 @@ add_newline = false
 
 format = """${custom.homeindicator}$directory$git_branch$git_status$character"""
 right_format = """$cmd_duration$all$memory_usage$time"""
+# right_format = "R"
 
 [character]
 disabled = false
@@ -66,4 +67,13 @@ style = "fg:black bg:white"
 format = "[$symbol($version )]($style)"
 
 [golang]
+format = "[$symbol($version )]($style)"
+
+[package]
+format = "[$symbol$version]($style) "
+
+[python]
+format = '[${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
+
+[perl]
 format = "[$symbol($version )]($style)"
