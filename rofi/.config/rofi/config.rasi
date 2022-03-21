@@ -146,6 +146,7 @@ configuration {
     foreground: @lightred;
 }
 #element alternate normal {
+	background-color: transparent;
 }
 #element alternate active {
     foreground: @lightblue;
@@ -162,7 +163,7 @@ configuration {
     foreground: @dark;
 }
 #element normal normal {
-
+	background-color: transparent;
 }
 
 #vertb {
