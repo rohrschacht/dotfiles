@@ -1,32 +1,41 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.config/zsh/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
+
+export HISTFILE="$XDG_DATA_HOME/zsh/zsh_history"
 
 # Path to your oh-my-zsh installation.
-export ZSH=$XDG_CONFIG_HOME/oh-my-zsh
+export ZSH="$XDG_CONFIG_HOME/oh-my-zsh"
 
-# Set name of the theme to load. Optionally, if you set this to "random"
-# it'll load a random theme each time that oh-my-zsh is loaded.
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+# Set name of the theme to load --- if set to "random", it will
+# load a random theme each time oh-my-zsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $RANDOM_THEME
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 # ZSH_THEME="robbyrussell"
-#ZSH_THEME="fish-like"
-ZSH_THEME="powerlevel10k/powerlevel10k"
+ZSH_THEME="robbyrussell-shrinkpath"
+
+# Set list of themes to pick from when loading at random
+# Setting this variable when ZSH_THEME=random will cause zsh to load
+# a theme from this variable instead of looking in $ZSH/themes/
+# If set to an empty array, this variable will have no effect.
+# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
-# Uncomment the following line to use hyphen-insensitive completion. Case
-# sensitive completion must be off. _ and - will be interchangeable.
+# Uncomment the following line to use hyphen-insensitive completion.
+# Case-sensitive completion must be off. _ and - will be interchangeable.
 # HYPHEN_INSENSITIVE="true"
 
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
+# Uncomment one of the following lines to change the auto-update behavior
+# zstyle ':omz:update' mode disabled  # disable automatic updates
+# zstyle ':omz:update' mode auto      # update automatically without asking
+# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 
 # Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
+# zstyle ':omz:update' frequency 13
+
+# Uncomment the following line if pasting URLs and other text is messed up.
+# DISABLE_MAGIC_FUNCTIONS="true"
 
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
@@ -38,6 +47,9 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
+# You can also set it to another string to have that shown instead of the default red dots.
+# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
+# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
 # COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
@@ -47,17 +59,21 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
-# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# HIST_STAMPS="mm/dd/yyyy"
+# You can set one of the optional three formats:
+# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# or set a custom format using the strftime function format specifications,
+# see 'man strftime' for details.
+# HIST_STAMPS="yyyy-mm-dd"
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Which plugins would you like to load?
+# Standard plugins can be found in $ZSH/plugins/
+# Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git tmux ssh-hosts ssh-bootstrap-config zsh-autosuggestions zsh-history-substring-search zsh-syntax-highlighting)
+plugins=(git nvm z command-not-found poetry shrink-path zsh-autosuggestions zsh-syntax-highlighting zsh-history-substring-search)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -68,77 +84,21 @@ bindkey '^[[B' history-substring-search-down
 bindkey "^[[5~" history-substring-search-up
 bindkey "^[[6~" history-substring-search-down
 
-#bindkey -v
-#export KEYTIMEOUT=1
-#export TERM=xterm-256color
-[ -n "$TMUX" ] && export TERM=screen-256color
-
-alias glog2='git log --graph --abbrev-commit --decorate --format=format:"%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n%C(white)%s%C(reset) %C(dim white)- %an%C(reset)" --all'
-if command -v exa >/dev/null 2>&1; then
-	alias ll='exa -lg'
-	alias la='exa -lga'
-else
-	alias ll='ls -lh'
-	alias la='ls -lah'
-fi
-alias p=pacman
-alias ssy='sudo systemctl '
-compdef ssy=systemctl
-alias cp='cp -av --reflink=auto'
-alias n=ranger
-unalias grep
-
-alias ssh=ssh-bootstrap-config
-compdef ssh-bootstrap-config=ssh
+# export MANPATH="/usr/local/man:$MANPATH"
+export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 
 function ok() {
 	true
 }
 
-function pacman() {
-	if [[ $1 = "--depclean" ]]; then
-        sudo pacman -Rns $(command pacman -Qtdq)
-    elif [[ $1 = "--browse-installed" ]]; then
-        command pacman -Qq | fzf --preview 'command pacman -Qil {}' --layout=reverse --bind 'enter:execute(command pacman -Qil {} | less)'
-    elif [[ $1 = "--browse-explicitly-installed" ]]; then
-        command pacman -Qqe | fzf --preview 'command pacman -Qil {}' --layout=reverse --bind 'enter:execute(command pacman -Qil {} | less)'
-    elif [[ $1 = "-Ss" ]]; then
-        pacsearch $@[2,-1]
-    else
-        sudo pacman "$@"
-	fi
-}
-
-function cal() {
-	command cal -m "$@"
-}
-
-function decompressBtrfs() {
-	[ -z "$1" ] && { echo "Specify directory to recursively decompress!" ; return 1 }
-	sudo find "$1" | xargs -I{} sudo btrfs property set {} compression none
-	sudo find "$1" -type f | xargs -I{} sudo sh -c "mv {} {}.compd && cp {}.compd {} && rm {}.compd"
-}
-
-# Expand aliases
-# function expand-alias() {
-# 	zle _expand_alias
-# 	zle self-insert
-# }
-# zle -N expand-alias
-# bindkey -M main ' ' expand-alias
-
-# Set window title
-DISABLE_AUTO_TITLE="true"
-
-function precmd() {
-	print -Pn "\e]0;%n@%M: %~\a"
-}
-
-function preexec() {
-	print -Pn "\e]0;$1\a"
-}
-
-# export MANPATH="/usr/local/man:$MANPATH"
+if command -v exa >/dev/null 2>&1; then
+	alias ls='exa'
+	alias ll='exa -lgG'
+	alias la='exa -lgaG'
+else
+	alias ll='ls -lh'
+	alias la='ls -lah'
+fi
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -153,9 +113,6 @@ function preexec() {
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
-# ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
-
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
@@ -164,18 +121,3 @@ function preexec() {
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-if [ -f ~/.zsh_aliases ]; then
-  . ~/.zsh_aliases
-fi
-
-#export SSH_AUTH_SOCK=~/.ssh/ssh-agent.$(hostname).sock
-export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
-
-export VIMINIT="source $XDG_CONFIG_HOME/vim/.vimrc"
-
-# To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
-if [ "$TERM" = "linux" ]; then
-	[[ ! -f ~/.config/zsh/.p10k-ascii-8color.zsh ]] || source ~/.config/zsh/.p10k-ascii-8color.zsh
-else
-	[[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
-fi
