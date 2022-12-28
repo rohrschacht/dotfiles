@@ -60,7 +60,7 @@ style = "fg:black bg:yellow"
 
 [time]
 disabled = false
-format = "[](fg:white bg:yellow)[ $time   ]($style) "
+format = "[](fg:white bg:yellow)[ $time  ]($style)"
 style = "fg:black bg:white"
 
 [nodejs]
