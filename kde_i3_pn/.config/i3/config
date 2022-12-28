@@ -47,7 +47,7 @@ floating_modifier $mod
 
 # application launchers
 bindsym $mod+d exec rofi -show drun -modi drun # Dmenu
-bindsym $mod+Return exec WINIT_HIDPI_FACTOR=1 alacritty -e fish # terminal
+bindsym $mod+Return exec WINIT_HIDPI_FACTOR=1 alacritty # terminal
 bindsym $mod+b exec firefox # Browser
 bindsym $mod+e exec dolphin # file manager
 bindsym $mod+Shift+e exec alacritty -e ranger # minimal file manager
@@ -125,7 +125,7 @@ workspace $ws2 output primary
 workspace $ws3 output primary
 workspace $ws4 output primary
 workspace $ws5 output primary
-workspace $ws6 output DP2-1
+workspace $ws6 output DP-2-1
 workspace $ws7 output eDP1
 workspace $ws8 output HDMI1
 workspace $ws9 output HDMI2
@@ -204,6 +204,7 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
         status_command i3status
+		tray_output none
 }
 
 # KDE compatibility
