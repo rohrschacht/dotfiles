@@ -100,6 +100,8 @@ else
 	alias la='ls -lah'
 fi
 
+alias open=xdg-open
+
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
