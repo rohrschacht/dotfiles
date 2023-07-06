@@ -101,7 +101,7 @@ scrolling:
 font:
   # Normal (roman) font face
   normal:
-    family: DejaVu Sans Mono Nerd Font
+    family: DejaVu Sans M Nerd Font
     # Font family
     #
     # Default:
@@ -115,7 +115,7 @@ font:
 
   # Bold font face
   bold:
-    family: DejaVu Sans Mono Nerd Font
+    family: DejaVu Sans M Nerd Font
     # Font family
     #
     # If the bold family is not specified, it will fall back to the
@@ -127,7 +127,7 @@ font:
 
   # Italic font face
   italic:
-    family: DejaVu Sans Mono Nerd Font
+    family: DejaVu Sans M Nerd Font
     # Font family
     #
     # If the italic family is not specified, it will fall back to the
@@ -138,7 +138,7 @@ font:
     style: Oblique
 
   # Point size
-  size: 10.0
+  size: 11.5
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
@@ -606,7 +606,7 @@ schemes:
         cyan:    '#8FBCBB'
         white:   '#ECEFF4'
 
-colors: *nord
+colors: *solarized
 
 # Visual Bell
 #
