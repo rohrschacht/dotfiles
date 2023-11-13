@@ -544,15 +544,15 @@ schemes:
       white:   '#928374'
     # indexed_colors: []
 
-  gruvboxLight: &gbl
-    # Default colors
+  gruvboxlight: &gbl
+    # default colors
     primary:
       # hard contrast: background = '0xf9f5d7'
       background: '0xfbf1c7'
       # soft contrast: background = '0xf2e5bc'
       foreground: '0x3c3836'
 
-    # Normal colors
+    # normal colors
     normal:
       black:   '0xfbf1c7'
       red:     '0xcc241d'
@@ -563,7 +563,7 @@ schemes:
       cyan:    '0x689d6a'
       white:   '0x7c6f64'
 
-    # Bright colors
+    # bright colors
     bright:
       black:   '0x928374'
       red:     '0x9d0006'
@@ -577,32 +577,58 @@ schemes:
   nord: &nord
     colors:
       primary:
-        background: '#2E3440'
-        foreground: '#D8DEE9'
+        background: '#2e3440'
+        foreground: '#d8dee9'
 
-      # Normal colors
+      # normal colors
       normal:
-        black:   '#3B4252'
-        red:     '#BF616A'
-        green:   '#A3BE8C'
-        yellow:  '#EBCB8B'
-        blue:    '#81A1C1'
-        magenta: '#B48EAD'
-        cyan:    '#88C0D0'
-        white:   '#E5E9F0'
+        black:   '#3b4252'
+        red:     '#bf616a'
+        green:   '#a3be8c'
+        yellow:  '#ebcb8b'
+        blue:    '#81a1c1'
+        magenta: '#b48ead'
+        cyan:    '#88c0d0'
+        white:   '#e5e9f0'
 
-      # Bright colors
+      # bright colors
       bright:
-        black:   '#4C566A'
-        red:     '#BF616A'
-        green:   '#A3BE8C'
-        yellow:  '#EBCB8B'
-        blue:    '#81A1C1'
-        magenta: '#B48EAD'
-        cyan:    '#8FBCBB'
-        white:   '#ECEFF4'
+        black:   '#4c566a'
+        red:     '#bf616a'
+        green:   '#a3be8c'
+        yellow:  '#ebcb8b'
+        blue:    '#81a1c1'
+        magenta: '#b48ead'
+        cyan:    '#8fbcbb'
+        white:   '#eceff4'
 
-colors: *gbl
+  intellij_dark: &ijd
+    # default colors
+    primary:
+      background: '0x1e1f22'
+      foreground: '0xbcbec4'
+
+    normal:
+      black:   '0x000000'
+      red:     '0xf0524f'
+      green:   '0x5c962c'
+      yellow:  '0xa68a0d'
+      blue:    '0x3993d4'
+      magenta: '0xa771bf'
+      cyan:    '0x00a3a3'
+      white:   '0x808080'
+
+    bright:
+      black:   '0x595959'
+      red:     '0xff4050'
+      green:   '0x4fc414'
+      yellow:  '0xe5bf00'
+      blue:    '0x1fb0ff'
+      magenta: '0xed7eed'
+      cyan:    '0x00e5e5'
+      white:   '0xffffff'
+
+colors: *ijd
 
 # Visual Bell
 #
