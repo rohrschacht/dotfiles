@@ -27,6 +27,12 @@ mkdir -p ~/.local/share/zsh
 mkdir -p ~/.config/zsh
 
 stow oh-my-zsh
+stow starship
+stow gpg-agent-startup
+
+if ! command -v starship >/dev/null 2>&1; then
+	curl -sS https://starship.rs/install.sh | sh
+fi
 
 git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/.config/oh-my-zsh/plugins/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-history-substring-search.git ~/.config/oh-my-zsh/plugins/zsh-history-substring-search
