@@ -12,11 +12,12 @@ XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
 #     - fd
 #     - ripgrep
 #     - rofi (wayland)
+#     - btop
 # ================================================================================
 
 set -e
 
-sudo zypper install stow tmux alacritty eza fd ripgrep rofi-wayland
+sudo zypper install stow tmux alacritty eza fd ripgrep rofi-wayland btop
 
 stow alacritty
 stow ideavim
