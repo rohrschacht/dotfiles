@@ -2,8 +2,6 @@
 
 XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
 
-set -e
-
 PWDSAVE=$PWD
 cd $HOME
 
