@@ -1,0 +1,2 @@
+#!/bin/sh
+gpg-agent --daemon --enable-ssh-support
