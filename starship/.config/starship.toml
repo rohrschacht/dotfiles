@@ -1,11 +1,11 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
 add_newline = false
 
-format = """${custom.homeindicator}$directory$git_branch$git_status$character"""
+format = """${custom.homeindicator}$directory$git_branch$git_commit$git_status$character"""
 right_format = """$cmd_duration$all$memory_usage$time"""
-# right_format = "R"
 
 [character]
-disabled = false
 success_symbol = "[  ](fg:black bg:green)[](green)"
 error_symbol = "[  ](fg:black bold bg:red)[](bold red)"
 vicmd_symbol = "[  ](fg:black bg:purple)[](purple)"
@@ -31,6 +31,12 @@ map_symbol = true
 [git_branch]
 format = "[ $symbol$branch ]($style)"
 style = "fg:black bg:yellow"
+only_attached = true
+
+[git_commit]
+format = "[ $hash$tag ]($style)"
+style = "fg:black bg:yellow"
+tag_disabled = false
 
 [git_status]
 format = '([$all_status$ahead_behind ]($style))'
@@ -47,15 +53,14 @@ disabled = true
 fish_indicator = ""
 
 [cmd_duration]
-disabled = false
 format = "[ $duration   ]($style)"
-style = "fg:yellow bg:black"
+style = "fg:yellow"
 
 [memory_usage]
 disabled = false
 threshold = 0
 symbol = " "
-format = "[](fg:yellow bg:black)[ ${ram} $symbol ]($style)"
+format = "[](fg:yellow)[ ${ram} $symbol ]($style)"
 style = "fg:black bg:yellow"
 
 [time]
@@ -74,6 +79,10 @@ format = "[$symbol$version]($style) "
 
 [python]
 format = '[${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
+python_binary = 'python3'
 
 [perl]
 format = "[$symbol($version )]($style)"
+
+[terraform]
+format = "[$symbol($workspace )]($style)"

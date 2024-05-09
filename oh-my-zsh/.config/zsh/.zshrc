@@ -73,7 +73,7 @@ ZSH_THEME="robbyrussell-shrinkpath"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git nvm z command-not-found poetry shrink-path zsh-autosuggestions zsh-syntax-highlighting zsh-history-substring-search)
+plugins=(aliases fd git suse nvm z command-not-found poetry shrink-path zbell zsh-autosuggestions zsh-syntax-highlighting zsh-history-substring-search starship)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -91,10 +91,10 @@ function ok() {
 	true
 }
 
-if command -v exa >/dev/null 2>&1; then
-	alias ls='exa'
-	alias ll='exa -lgG'
-	alias la='exa -lgaG'
+if command -v eza >/dev/null 2>&1; then
+	alias ls='eza'
+	alias ll='eza -lgG'
+	alias la='eza -lgaG'
 else
 	alias ll='ls -lh'
 	alias la='ls -lah'
