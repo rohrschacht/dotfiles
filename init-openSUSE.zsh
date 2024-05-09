@@ -14,6 +14,8 @@ XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
 #     - rofi (wayland)
 # ================================================================================
 
+set -e
+
 sudo zypper install stow tmux alacritty eza fd ripgrep rofi-wayland
 
 stow alacritty
