@@ -1,0 +1,1047 @@
+# Configuration for Alacritty, the GPU enhanced terminal emulator.
+
+# Windows 10 ConPTY backend (Windows only)
+#
+# This will enable better color support and may resolve other issues,
+# however this API and its implementation is still young and so is
+# disabled by default, as stability may not be as good as the winpty
+# backend.
+#
+# Alacritty will fall back to the WinPTY automatically if the ConPTY
+# backend cannot be initialized.
+# enable_experimental_conpty_backend = false
+
+# Live config reload (changes require restart)
+live_config_reload = true
+
+# Visual Bell
+#
+# Any time the BEL code is received, Alacritty "rings" the visual bell. Once
+# rung, the terminal background will be set to white and transition back to the
+# default background color. You can control the rate of this transition by
+# setting the `duration` property (represented in milliseconds). You can also
+# configure the transition function by setting the `animation` property.
+#
+# Values for `animation`:
+#   - Ease
+#   - EaseOut
+#   - EaseOutSine
+#   - EaseOutQuad
+#   - EaseOutCubic
+#   - EaseOutQuart
+#   - EaseOutQuint
+#   - EaseOutExpo
+#   - EaseOutCirc
+#   - Linear
+#
+# Specifying a `duration` of `0` will disable the visual bell.
+[bell]
+animation = "EaseOut"
+color = "0xffffff"
+duration = 0
+
+[colors]
+# If `true`, bold text is drawn using the bright color variants.
+draw_bold_text_with_bright_colors = true
+
+[colors.bright]
+black = "0x595959"
+blue = "0x1fb0ff"
+cyan = "0x00e5e5"
+green = "0x4fc414"
+magenta = "0xed7eed"
+red = "0xff4050"
+white = "0xffffff"
+yellow = "0xe5bf00"
+
+[colors.normal]
+black = "0x000000"
+blue = "0x3993d4"
+cyan = "0x00a3a3"
+green = "0x5c962c"
+magenta = "0xa771bf"
+red = "0xf0524f"
+white = "0x808080"
+yellow = "0xa68a0d"
+
+[colors.primary]
+background = "0x1e1f22"
+foreground = "0xbcbec4"
+
+# Cursor style
+[cursor]
+# Values for `style`:
+#   - ▇ Block
+#   - _ Underline
+#   - | Beam
+style = "Block"
+# If this is `true`, the cursor will be rendered as a hollow box when the
+# window is not focused.
+unfocused_hollow = true
+
+[debug]
+# Keep the log file after quitting Alacritty.
+persistent_logging = false
+# Display the time it takes to redraw each frame.
+render_timer = false
+
+# Any items in the `env` entry below will be added as
+# environment variables. Some entries may override variables
+# set by alacritty itself.
+[env]
+# TERM variable
+#
+# This value is used to set the `$TERM` environment variable for
+# each instance of Alacritty. If it is not present, alacritty will
+# check the local terminfo database and use `alacritty` if it is
+# available, otherwise `xterm-256color` is used.
+TERM = "xterm-256color"
+WINIT_X11_SCALE_FACTOR = "1.0"
+
+# Font configuration (changes require restart)
+[font]
+# Point size
+size = 11.5
+
+# Normal (roman) font face
+[font.normal]
+family = "DejaVu Sans M Nerd Font"
+style = "Regular"
+
+# Bold font face
+[font.bold]
+family = "DejaVu Sans M Nerd Font"
+style = "Bold"
+
+# Italic font face
+[font.italic]
+family = "DejaVu Sans M Nerd Font"
+style = "Oblique"
+
+# Offset is the extra space around each character. `offset.y` can be thought of
+# as modifying the line spacing, and `offset.x` as modifying the letter spacing.
+[font.offset]
+x = 0
+y = 0
+
+# Glyph offset determines the locations of the glyphs within their cells with
+# the default being at the bottom. Increasing `x` moves the glyph to the right,
+# increasing `y` moves the glyph upwards.
+[font.glyph_offset]
+x = 0
+y = 0
+
+[[keyboard.bindings]]
+action = "ScrollLineUp"
+key = "K"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "ScrollLineDown"
+key = "J"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "Paste"
+key = "Paste"
+
+[[keyboard.bindings]]
+action = "Copy"
+key = "Copy"
+
+[[keyboard.bindings]]
+action = "ClearLogNotice"
+key = "L"
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = "\f"
+key = "L"
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = "\u001B[1;3H"
+key = "Home"
+mods = "Alt"
+
+[[keyboard.bindings]]
+chars = "\u001BOH"
+key = "Home"
+mode = "AppCursor"
+
+[[keyboard.bindings]]
+chars = "\u001B[H"
+key = "Home"
+mode = "~AppCursor"
+
+[[keyboard.bindings]]
+chars = "\u001B[1;3F"
+key = "End"
+mods = "Alt"
+
+[[keyboard.bindings]]
+chars = "\u001BOF"
+key = "End"
+mode = "AppCursor"
+
+[[keyboard.bindings]]
+chars = "\u001B[F"
+key = "End"
+mode = "~AppCursor"
+
+[[keyboard.bindings]]
+action = "ScrollPageUp"
+key = "PageUp"
+mode = "~Alt"
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = "\u001B[5~"
+key = "PageUp"
+
+[[keyboard.bindings]]
+action = "ScrollPageDown"
+key = "PageDown"
+mode = "~Alt"
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = "\u001B[6~"
+key = "PageDown"
+
+[[keyboard.bindings]]
+chars = "\u001B[Z"
+key = "Tab"
+mods = "Shift"
+
+[[keyboard.bindings]]
+chars = "\u007F"
+key = "Back"
+
+[[keyboard.bindings]]
+chars = "\u001B\u007F"
+key = "Back"
+mods = "Alt"
+
+[[keyboard.bindings]]
+chars = "\u001B[2~"
+key = "Insert"
+
+[[keyboard.bindings]]
+chars = "\u001B[3~"
+key = "Delete"
+
+[[keyboard.bindings]]
+chars = "\u001B[1;2D"
+key = "Left"
+mods = "Shift"
+
+[[keyboard.bindings]]
+chars = "\u001B[1;5D"
+key = "Left"
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = "\u001B[1;3D"
+key = "Left"
+mods = "Alt"
+
+[[keyboard.bindings]]
+chars = "\u001B[D"
+key = "Left"
+mode = "~AppCursor"
+
+[[keyboard.bindings]]
+chars = "\u001BOD"
+key = "Left"
+mode = "AppCursor"
+
+[[keyboard.bindings]]
+chars = "\u001B[1;2C"
+key = "Right"
+mods = "Shift"
+
+[[keyboard.bindings]]
+chars = "\u001B[1;5C"
+key = "Right"
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = "\u001B[1;3C"
+key = "Right"
+mods = "Alt"
+
+[[keyboard.bindings]]
+chars = "\u001B[C"
+key = "Right"
+mode = "~AppCursor"
+
+[[keyboard.bindings]]
+chars = "\u001BOC"
+key = "Right"
+mode = "AppCursor"
+
+[[keyboard.bindings]]
+chars = "\u001B[1;2A"
+key = "Up"
+mods = "Shift"
+
+[[keyboard.bindings]]
+chars = "\u001B[1;5A"
+key = "Up"
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = "\u001B[1;3A"
+key = "Up"
+mods = "Alt"
+
+[[keyboard.bindings]]
+chars = "\u001B[A"
+key = "Up"
+mode = "~AppCursor"
+
+[[keyboard.bindings]]
+chars = "\u001BOA"
+key = "Up"
+mode = "AppCursor"
+
+[[keyboard.bindings]]
+chars = "\u001B[1;2B"
+key = "Down"
+mods = "Shift"
+
+[[keyboard.bindings]]
+chars = "\u001B[1;5B"
+key = "Down"
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = "\u001B[1;3B"
+key = "Down"
+mods = "Alt"
+
+[[keyboard.bindings]]
+chars = "\u001B[B"
+key = "Down"
+mode = "~AppCursor"
+
+[[keyboard.bindings]]
+chars = "\u001BOB"
+key = "Down"
+mode = "AppCursor"
+
+[[keyboard.bindings]]
+chars = "\u001BOP"
+key = "F1"
+
+[[keyboard.bindings]]
+chars = "\u001BOQ"
+key = "F2"
+
+[[keyboard.bindings]]
+chars = "\u001BOR"
+key = "F3"
+
+[[keyboard.bindings]]
+chars = "\u001BOS"
+key = "F4"
+
+[[keyboard.bindings]]
+chars = "\u001B[15~"
+key = "F5"
+
+[[keyboard.bindings]]
+chars = "\u001B[17~"
+key = "F6"
+
+[[keyboard.bindings]]
+chars = "\u001B[18~"
+key = "F7"
+
+[[keyboard.bindings]]
+chars = "\u001B[19~"
+key = "F8"
+
+[[keyboard.bindings]]
+chars = "\u001B[20~"
+key = "F9"
+
+[[keyboard.bindings]]
+chars = "\u001B[21~"
+key = "F10"
+
+[[keyboard.bindings]]
+chars = "\u001B[23~"
+key = "F11"
+
+[[keyboard.bindings]]
+chars = "\u001B[24~"
+key = "F12"
+
+[[keyboard.bindings]]
+chars = "\u001B[1;2P"
+key = "F1"
+mods = "Shift"
+
+[[keyboard.bindings]]
+chars = "\u001B[1;2Q"
+key = "F2"
+mods = "Shift"
+
+[[keyboard.bindings]]
+chars = "\u001B[1;2R"
+key = "F3"
+mods = "Shift"
+
+[[keyboard.bindings]]
+chars = "\u001B[1;2S"
+key = "F4"
+mods = "Shift"
+
+[[keyboard.bindings]]
+chars = "\u001B[15;2~"
+key = "F5"
+mods = "Shift"
+
+[[keyboard.bindings]]
+chars = "\u001B[17;2~"
+key = "F6"
+mods = "Shift"
+
+[[keyboard.bindings]]
+chars = "\u001B[18;2~"
+key = "F7"
+mods = "Shift"
+
+[[keyboard.bindings]]
+chars = "\u001B[19;2~"
+key = "F8"
+mods = "Shift"
+
+[[keyboard.bindings]]
+chars = "\u001B[20;2~"
+key = "F9"
+mods = "Shift"
+
+[[keyboard.bindings]]
+chars = "\u001B[21;2~"
+key = "F10"
+mods = "Shift"
+
+[[keyboard.bindings]]
+chars = "\u001B[23;2~"
+key = "F11"
+mods = "Shift"
+
+[[keyboard.bindings]]
+chars = "\u001B[24;2~"
+key = "F12"
+mods = "Shift"
+
+[[keyboard.bindings]]
+chars = "\u001B[1;5P"
+key = "F1"
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = "\u001B[1;5Q"
+key = "F2"
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = "\u001B[1;5R"
+key = "F3"
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = "\u001B[1;5S"
+key = "F4"
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = "\u001B[15;5~"
+key = "F5"
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = "\u001B[17;5~"
+key = "F6"
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = "\u001B[18;5~"
+key = "F7"
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = "\u001B[19;5~"
+key = "F8"
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = "\u001B[20;5~"
+key = "F9"
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = "\u001B[21;5~"
+key = "F10"
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = "\u001B[23;5~"
+key = "F11"
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = "\u001B[24;5~"
+key = "F12"
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = "\u001B[1;6P"
+key = "F1"
+mods = "Alt"
+
+[[keyboard.bindings]]
+chars = "\u001B[1;6Q"
+key = "F2"
+mods = "Alt"
+
+[[keyboard.bindings]]
+chars = "\u001B[1;6R"
+key = "F3"
+mods = "Alt"
+
+[[keyboard.bindings]]
+chars = "\u001B[1;6S"
+key = "F4"
+mods = "Alt"
+
+[[keyboard.bindings]]
+chars = "\u001B[15;6~"
+key = "F5"
+mods = "Alt"
+
+[[keyboard.bindings]]
+chars = "\u001B[17;6~"
+key = "F6"
+mods = "Alt"
+
+[[keyboard.bindings]]
+chars = "\u001B[18;6~"
+key = "F7"
+mods = "Alt"
+
+[[keyboard.bindings]]
+chars = "\u001B[19;6~"
+key = "F8"
+mods = "Alt"
+
+[[keyboard.bindings]]
+chars = "\u001B[20;6~"
+key = "F9"
+mods = "Alt"
+
+[[keyboard.bindings]]
+chars = "\u001B[21;6~"
+key = "F10"
+mods = "Alt"
+
+[[keyboard.bindings]]
+chars = "\u001B[23;6~"
+key = "F11"
+mods = "Alt"
+
+[[keyboard.bindings]]
+chars = "\u001B[24;6~"
+key = "F12"
+mods = "Alt"
+
+[[keyboard.bindings]]
+chars = "\u001B[1;3P"
+key = "F1"
+mods = "Super"
+
+[[keyboard.bindings]]
+chars = "\u001B[1;3Q"
+key = "F2"
+mods = "Super"
+
+[[keyboard.bindings]]
+chars = "\u001B[1;3R"
+key = "F3"
+mods = "Super"
+
+[[keyboard.bindings]]
+chars = "\u001B[1;3S"
+key = "F4"
+mods = "Super"
+
+[[keyboard.bindings]]
+chars = "\u001B[15;3~"
+key = "F5"
+mods = "Super"
+
+[[keyboard.bindings]]
+chars = "\u001B[17;3~"
+key = "F6"
+mods = "Super"
+
+[[keyboard.bindings]]
+chars = "\u001B[18;3~"
+key = "F7"
+mods = "Super"
+
+[[keyboard.bindings]]
+chars = "\u001B[19;3~"
+key = "F8"
+mods = "Super"
+
+[[keyboard.bindings]]
+chars = "\u001B[20;3~"
+key = "F9"
+mods = "Super"
+
+[[keyboard.bindings]]
+chars = "\u001B[21;3~"
+key = "F10"
+mods = "Super"
+
+[[keyboard.bindings]]
+chars = "\u001B[23;3~"
+key = "F11"
+mods = "Super"
+
+[[keyboard.bindings]]
+chars = "\u001B[24;3~"
+key = "F12"
+mods = "Super"
+
+[[keyboard.bindings]]
+chars = """
+
+"""
+key = "NumpadEnter"
+
+[mouse]
+hide_when_typing = false
+
+[[mouse.bindings]]
+action = "PasteSelection"
+mouse = "Middle"
+
+# [mouse.double_click]
+# threshold = 300
+# 
+# [mouse.triple_click]
+# threshold = 300
+
+# [[schemes.darcula_256.indexed_colors]]
+# color = "0x689757"
+# index = 16
+# 
+# [[schemes.darcula_256.indexed_colors]]
+# color = "0x808080"
+# index = 17
+# 
+# [[schemes.darcula_256.indexed_colors]]
+# color = "0x323232"
+# index = 18
+# 
+# [[schemes.darcula_256.indexed_colors]]
+# color = "0x323232"
+# index = 19
+# 
+# [[schemes.darcula_256.indexed_colors]]
+# color = "0xa4a3a3"
+# index = 20
+# 
+# [[schemes.darcula_256.indexed_colors]]
+# color = "0xffc66d"
+# index = 21
+# 
+# [schemes.darcula_256.bright]
+# black = "0x606366"
+# blue = "0x9876aa"
+# cyan = "0x629755"
+# green = "0x6a8759"
+# magenta = "0xcc7832"
+# red = "0x4eade5"
+# white = "0xffffff"
+# yellow = "0xbbb529"
+# 
+# [schemes.darcula_256.cursor]
+# cursor = "0xa9b7c6"
+# text = "0x2b2b2b"
+# 
+# [schemes.darcula_256.normal]
+# black = "0x2b2b2b"
+# blue = "0x9876aa"
+# cyan = "0x629755"
+# green = "0x6a8759"
+# magenta = "0xcc7832"
+# red = "0x4eade5"
+# white = "0xa9b7c6"
+# yellow = "0xbbb529"
+# 
+# [schemes.darcula_256.primary]
+# background = "0x2b2b2b"
+# foreground = "0xa9b7c6"
+# 
+# [schemes.gruvbox.bright]
+# black = "#928374"
+# blue = "#83a598"
+# cyan = "#8ec07c"
+# green = "#b8bb26"
+# magenta = "#d3869b"
+# red = "#fb4934"
+# white = "#ebdbb2"
+# yellow = "#fabd2f"
+# 
+# [schemes.gruvbox.cursor]
+# cursor = "CellForeground"
+# text = "CellBackground"
+# 
+# [schemes.gruvbox.dim]
+# black = "#32302f"
+# blue = "#076678"
+# cyan = "#427b58"
+# green = "#79740e"
+# magenta = "#8f3f71"
+# red = "#9d0006"
+# white = "#928374"
+# yellow = "#b57614"
+# 
+# [schemes.gruvbox.normal]
+# black = "#282828"
+# blue = "#458588"
+# cyan = "#689d6a"
+# green = "#98971a"
+# magenta = "#b16286"
+# red = "#cc241d"
+# white = "#a89984"
+# yellow = "#d79921"
+# 
+# [schemes.gruvbox.primary]
+# background = "#282828"
+# bright_foreground = "#fbf1c7"
+# dim_foreground = "#a89984"
+# foreground = "#ebdbb2"
+# 
+# [schemes.gruvbox.selection]
+# background = "CellForeground"
+# text = "CellBackground"
+# 
+# [schemes.gruvbox.vi_mode_cursor]
+# cursor = "CellForeground"
+# text = "CellBackground"
+# 
+# [schemes.gruvboxlight.bright]
+# black = "0x928374"
+# blue = "0x076678"
+# cyan = "0x427b58"
+# green = "0x79740e"
+# magenta = "0x8f3f71"
+# red = "0x9d0006"
+# white = "0x3c3836"
+# yellow = "0xb57614"
+# 
+# [schemes.gruvboxlight.normal]
+# black = "0xfbf1c7"
+# blue = "0x458588"
+# cyan = "0x689d6a"
+# green = "0x98971a"
+# magenta = "0xb16286"
+# red = "0xcc241d"
+# white = "0x7c6f64"
+# yellow = "0xd79921"
+# 
+# [schemes.gruvboxlight.primary]
+# background = "0xfbf1c7"
+# foreground = "0x3c3836"
+# 
+# [schemes.intellij_dark.bright]
+# black = "0x595959"
+# blue = "0x1fb0ff"
+# cyan = "0x00e5e5"
+# green = "0x4fc414"
+# magenta = "0xed7eed"
+# red = "0xff4050"
+# white = "0xffffff"
+# yellow = "0xe5bf00"
+# 
+# [schemes.intellij_dark.normal]
+# black = "0x000000"
+# blue = "0x3993d4"
+# cyan = "0x00a3a3"
+# green = "0x5c962c"
+# magenta = "0xa771bf"
+# red = "0xf0524f"
+# white = "0x808080"
+# yellow = "0xa68a0d"
+# 
+# [schemes.intellij_dark.primary]
+# background = "0x1e1f22"
+# foreground = "0xbcbec4"
+# 
+# [schemes.material_darker.bright]
+# black = "0x4a4a4a"
+# blue = "0xb2ccd6"
+# cyan = "0xff5370"
+# green = "0x303030"
+# magenta = "0xeeffff"
+# red = "0xf78c6c"
+# white = "0xffffff"
+# yellow = "0x353535"
+# 
+# [schemes.material_darker.cursor]
+# cursor = "0xeeffff"
+# text = "0x212121"
+# 
+# [schemes.material_darker.normal]
+# black = "0x212121"
+# blue = "0x82aaff"
+# cyan = "0x89ddff"
+# green = "0xc3e88d"
+# magenta = "0xc792ea"
+# red = "0xf07178"
+# white = "0xeeffff"
+# yellow = "0xffcb6b"
+# 
+# [schemes.material_darker.primary]
+# background = "0x212121"
+# foreground = "0xeeffff"
+# 
+# [schemes.nord.colors.bright]
+# black = "#4c566a"
+# blue = "#81a1c1"
+# cyan = "#8fbcbb"
+# green = "#a3be8c"
+# magenta = "#b48ead"
+# red = "#bf616a"
+# white = "#eceff4"
+# yellow = "#ebcb8b"
+# 
+# [schemes.nord.colors.normal]
+# black = "#3b4252"
+# blue = "#81a1c1"
+# cyan = "#88c0d0"
+# green = "#a3be8c"
+# magenta = "#b48ead"
+# red = "#bf616a"
+# white = "#e5e9f0"
+# yellow = "#ebcb8b"
+# 
+# [schemes.nord.colors.primary]
+# background = "#2e3440"
+# foreground = "#d8dee9"
+# 
+# [schemes.oneDark.cursor]
+# cursor = "#528bff"
+# text = "CellBackground"
+# 
+# [schemes.oneDark.normal]
+# black = "#5c6370"
+# blue = "#61afef"
+# cyan = "#56b6c2"
+# green = "#98c379"
+# magenta = "#c678dd"
+# red = "#e06c75"
+# white = "#828997"
+# yellow = "#e5c07b"
+# 
+# [schemes.oneDark.primary]
+# background = "#282c34"
+# foreground = "#abb2bf"
+# 
+# [schemes.oneDark.selection]
+# background = "#3e4451"
+# text = "CellForeground"
+# 
+# [schemes.oneLight.cursor]
+# cursor = "#526eff"
+# text = "CellBackground"
+# 
+# [schemes.oneLight.normal]
+# black = "#696c77"
+# blue = "#4078f2"
+# cyan = "#0184bc"
+# green = "#50a14f"
+# magenta = "#a626a4"
+# red = "#e45649"
+# white = "#a0a1a7"
+# yellow = "#c18401"
+# 
+# [schemes.oneLight.primary]
+# background = "#fafafa"
+# foreground = "#383a42"
+# 
+# [schemes.oneLight.selection]
+# background = "#e5e5e6"
+# text = "CellForeground"
+# 
+# [schemes.solarized_dark.bright]
+# black = "#586e75"
+# blue = "#839496"
+# cyan = "#93a1a1"
+# green = "#586e75"
+# magenta = "#6c71c4"
+# red = "#cb4b16"
+# white = "#fdf6e3"
+# yellow = "#657b83"
+# 
+# [schemes.solarized_dark.cursor]
+# cursor = "#839496"
+# text = "#002b36"
+# 
+# [schemes.solarized_dark.normal]
+# black = "#073642"
+# blue = "#268bd2"
+# cyan = "#2aa198"
+# green = "#859900"
+# magenta = "#d33682"
+# red = "#dc322f"
+# white = "#eee8d5"
+# yellow = "#b58900"
+# 
+# [schemes.solarized_dark.primary]
+# background = "#002b36"
+# foreground = "#839496"
+# 
+# [schemes.solarized_light.bright]
+# black = "0x002b36"
+# blue = "0x839496"
+# cyan = "0x93a1a1"
+# green = "0x586e75"
+# magenta = "0x6c71c4"
+# red = "0xcb4b16"
+# white = "0xfdf6e3"
+# yellow = "0x657b83"
+# 
+# [schemes.solarized_light.normal]
+# black = "0x073642"
+# blue = "0x268bd2"
+# cyan = "0x2aa198"
+# green = "0x859900"
+# magenta = "0xd33682"
+# red = "0xdc322f"
+# white = "0xeee8d5"
+# yellow = "0xb58900"
+# 
+# [schemes.solarized_light.primary]
+# background = "0xfdf6e3"
+# foreground = "0x586e75"
+# 
+# [schemes.tomorrow_night.bright]
+# black = "#666666"
+# blue = "#81a2be"
+# cyan = "#54ced6"
+# green = "#9ec400"
+# magenta = "#b77ee0"
+# red = "#ff3334"
+# white = "#282a2e"
+# yellow = "#f0c674"
+# 
+# [schemes.tomorrow_night.cursor]
+# cursor = "#ffffff"
+# text = "#1d1f21"
+# 
+# [schemes.tomorrow_night.normal]
+# black = "#1d1f21"
+# blue = "#81a2be"
+# cyan = "#70c0ba"
+# green = "#b5bd68"
+# magenta = "#b294bb"
+# red = "#cc6666"
+# white = "#373b41"
+# yellow = "#e6c547"
+# 
+# [schemes.tomorrow_night.primary]
+# background = "#1d1f21"
+# foreground = "#c5c8c6"
+# 
+# [schemes.tomorrow_night_bright.bright]
+# black = "#666666"
+# blue = "#7aa6da"
+# cyan = "#54ced6"
+# green = "#9ec400"
+# magenta = "#b77ee0"
+# red = "#ff3334"
+# white = "#2a2a2a"
+# yellow = "#e7c547"
+# 
+# [schemes.tomorrow_night_bright.normal]
+# black = "#000000"
+# blue = "#7aa6da"
+# cyan = "#70c0ba"
+# green = "#b9ca4a"
+# magenta = "#c397d8"
+# red = "#d54e53"
+# white = "#424242"
+# yellow = "#e6c547"
+# 
+# [schemes.tomorrow_night_bright.primary]
+# background = "#000000"
+# foreground = "#eaeaea"
+# 
+# [schemes.tomorrow_night_bright_alternative]
+# indexed_colors = []
+# 
+# [schemes.tomorrow_night_bright_alternative.bright]
+# black = "0x686868"
+# blue = "0x1a8fff"
+# cyan = "0x54ffff"
+# green = "0x54ff54"
+# magenta = "0xff54ff"
+# red = "0xff5454"
+# white = "0xffffff"
+# yellow = "0xffff54"
+# 
+# [schemes.tomorrow_night_bright_alternative.dim]
+# black = "0x181818"
+# blue = "0x000065"
+# cyan = "0x18b2b2"
+# green = "0x006500"
+# magenta = "0x5f055f"
+# red = "0x650000"
+# white = "0x656565"
+# yellow = "0x654a00"
+# 
+# [schemes.tomorrow_night_bright_alternative.normal]
+# black = "0x000000"
+# blue = "0x0d73cc"
+# cyan = "0x18b2b2"
+# green = "0x18b218"
+# magenta = "0xb218b2"
+# red = "0xb21818"
+# white = "0xb2b2b2"
+# yellow = "0xb26818"
+# 
+# [schemes.tomorrow_night_bright_alternative.primary]
+# background = "0x000000"
+# foreground = "0xffffff"
+
+[scrolling]
+history = 10000
+multiplier = 3
+
+[selection]
+save_to_clipboard = false
+semantic_escape_chars = ",│`|:\"' ()[]{}<>"
+
+[window]
+decorations = "full"
+dynamic_padding = false
+dynamic_title = true
+opacity = 1.0
+startup_mode = "maximized"
+
+[window.dimensions]
+columns = 0
+lines = 0
+
+[window.padding]
+x = 2
+y = 2
